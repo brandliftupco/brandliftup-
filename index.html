@@ -1643,21 +1643,43 @@
     .footer-social {
       justify-content: center
     }
-    }
 
     .contact-form {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
 
-      .footer-logo-img {
-        height: 40px;
-        width: auto;
-        vertical-align: middle;
-        margin-right: 8px
+    .nav-logo-img {
+      height: 44px !important;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 8px rgba(255, 212, 94, .3));
+    }
+
+    .footer-logo-img {
+      height: 40px;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 8px
+    }
+
+    .nav-logo,
+    .footer-logo {
+      display: flex;
+      align-items: center
+    }
+
+    /* ========== FULL RESPONSIVE OVERHAUL ========== */
+
+    /* LARGE TABLETS (1024px) */
+    @media(max-width:1024px) {
+      nav {
+        padding: 16px 24px
       }
 
-      .nav-logo,
-      .footer-logo {
+      .nav-links {
         display: flex;
-        align-items: center
       }
 
       /* ========== FULL RESPONSIVE OVERHAUL ========== */
