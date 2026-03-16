@@ -5,70 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Growth Insights | The Metrix Mind Blog</title>
   <meta name="description" content="Local marketing strategies, case studies, and AI insights to help you scale your business.">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.min.css">
   <style>
-        :root {
-      --black: #050508;
-      --white: #f8f8f8;
-      --gold: #FFD700;
-      --orange: #FF4D00;
-      --purple: #7000FF;
-      --dim: #0a0a0f;
-      --muted: #888899;
-      --glass: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 215, 0, 0.1);
-    }
+    :root { --black: #050507; --white: #f0eee8; --gold: #FFD45E; --orange: #FF5C1A; --purple: #7B2FFF; --dim: #1a1a24; --muted: #6b6b7a; }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--black); color: var(--white); font-family: 'Outfit', sans-serif; cursor: none; }
+    body { background: var(--black); color: var(--white); font-family: 'Syne', sans-serif; cursor: none; }
     .cursor { width: 12px; height: 12px; background: var(--gold); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: difference; }
     .cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.15s ease; mix-blend-mode: difference; }
-    nav { position: fixed; top: 0; left: 0; right: 0; padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; backdrop-filter: blur(12px); background: rgba(5, 5, 7, 0.7); }
-    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
-    .nav-logo span { color: var(--gold); }
-    .section { padding: 160px 60px 80px; }
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; }
-    .blog-card { background: var(--dim); border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 212, 94, 0.05); transition: all 0.3s; }
-    .blog-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-    .blog-info { padding: 30px; }
-    .blog-cat { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--gold); text-transform: uppercase; margin-bottom: 15px; }
-    .blog-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1.1; margin-bottom: 15px; }
-    .blog-excerpt { font-size: 14px; color: var(--muted); line-height: 1.6; }
-    @media (max-width: 768px) { .section { padding: 120px 30px 60px; } }
-  </style>
-</head>
-<body>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-  <nav>
-    <a href="/" class="nav-logo">METRIX <span>MIND</span></a>
-  </nav>
-  <section class="section">
-    <h1 style="font-family:'Bebas Neue',sans-serif; font-size:80px; margin-bottom:60px;">GROWTH<br><span>INSIGHTS</span></h1>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-info">
-          <div class="blog-cat">Google Ads</div>
-          <h2 class="blog-title">How to Reduce Your Clinic's CPL by 40% in 30 Days</h2>
-          <p class="blog-excerpt">The exact audit checklist we use to find wasted ad spend in medical PPC accounts.</p>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-info">
-          <div class="blog-cat">Local SEO</div>
-          <h2 class="blog-title">GMB Optimization: The Secret to Dominating Local Search</h2>
-          <p class="blog-excerpt">Citatios, reviews, and signals. Everything you need to know about Map Pack rankings.</p>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-info">
-          <div class="blog-cat">Strategy</div>
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--black); color: var(--white); font-family: 'Outfit', sans-serif; cursor: none; }
-    .cursor { width: 12px; height: 12px; background: var(--gold); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: difference; }
-    .cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.15s ease; mix-blend-mode: difference; }
-    nav { position: fixed; top: 0; left: 0; right: 0; padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; backdrop-filter: blur(12px); background: rgba(5, 5, 7, 0.7); }
+    nav { position: fixed; top: 0; left: 0; right: 0; padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; z-index: 100; backdrop-filter: blur(12px); background: rgba(5, 5, 7, 0.7); }
     .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
     .nav-logo span { color: var(--gold); }
     .section { padding: 160px 60px 80px; }
@@ -115,19 +60,10 @@
     </div>
   </section>
   <footer style="text-align:center; padding:40px; border-top:1px solid rgba(255,212,94,0.08);">
-    <div class="footer-social">
-        <a href="https://www.instagram.com/metrixmind.in/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/metrixmind" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.youtube.com/@metrixmindin" target="_blank"><i class="fab fa-youtube"></i></a>
-    </div>
-    <div style="font-family:'Space Mono', monospace; font-size:11px; color:var(--muted); margin-top: 20px;">Stay updated. metrixmind.in@gmail.com</div>
+    <div style="font-family:'Space Mono', monospace; font-size:11px; color:var(--muted);">Stay updated. hello@brandliftup.in</div>
   </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
   <script>
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
@@ -139,68 +75,11 @@
       el.addEventListener('mouseenter', () => { ring.style.width = '60px'; ring.style.height = '60px'; ring.style.borderColor = 'var(--orange)'; });
       el.addEventListener('mouseleave', () => { ring.style.width = '40px'; ring.style.height = '40px'; ring.style.borderColor = 'var(--gold)'; });
     });
-    // 4. Advanced Word-by-Word Reveals
+    gsap.registerPlugin(ScrollTrigger);
     document.querySelectorAll('.reveal').forEach((el) => {
-      const text = el.innerText;
-      if (text.length > 5 && !el.querySelector('span')) {
-        el.innerHTML = text.split(' ').map(word => `<span class="word-wrap" style="display:inline-block; overflow:hidden;"><span class="word" style="display:inline-block;">${word}&nbsp;</span></span>`).join('');
-      }
-      
-      const words = el.querySelectorAll('.word');
-      if (words.length > 0) {
-        gsap.from(words, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-          y: "100%",
-          duration: 1,
-          stagger: 0.05,
-          ease: "power4.out"
-        });
-      } else {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out"
-        });
-      }
+      gsap.set(el, { y: 60, opacity: 0 });
+      gsap.to(el, { scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" }, y: 0, opacity: 1, duration: 1, ease: "power3.out" });
     });
-
-    // 5. Lenis Implementation
-    // 5. Lenis Implementation
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
     const magneticBtns = document.querySelectorAll('.magnetic-btn');
     magneticBtns.forEach(btn => {
       btn.addEventListener('mousemove', (e) => {
@@ -214,7 +93,5 @@
   </script>
 </body>
 </html>
-
-
 
 

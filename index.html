@@ -18,20 +18,74 @@
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="assets/style.css">
   
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
   <style>
-    /* Page Specific Styles */
+    :root {
+      --black: #050507;
+      --white: #f0eee8;
+      --gold: #FFD45E;
+      --orange: #FF5C1A;
+      --purple: #7B2FFF;
+      --dim: #1a1a24;
+      --muted: #6b6b7a;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden; /* Restored to hidden for native scrolling */
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-ring {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.15s ease, width 0.2s, height 0.2s;
+      mix-blend-mode: difference;
+    }
+
     /* NOISE OVERLAY */
     body::before {
       content: '';
@@ -84,6 +138,29 @@
       height: 100%;
       width: 0%;
       background: var(--gold);
+    }
+
+    /* GSAP REVEAL CLASSES (Override Old CSS Reveals) */
+    .reveal {
+      opacity: 1; /* Resetting old CSS reveal so GSAP completely controls it */
+      transform: none;
+      transition: none;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 5, 7, 0.7);
+      border-bottom: 1px solid rgba(255, 212, 94, 0.08);
     }
 
     .nav-logo {
@@ -165,88 +242,11 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
-      background-size: 80px 80px;
-      mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 0%, transparent 80%);
+        linear-gradient(rgba(255, 212, 94, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 212, 94, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 0%, transparent 70%);
     }
-
-    /* BLOBS */
-    .hero-blob {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: 1;
-      opacity: 0.4;
-      pointer-events: none;
-    }
-    .glow-purple { background: var(--purple); top: -10%; left: -10%; animation: floatBlob 20s infinite alternate; }
-    .glow-orange { background: var(--orange); bottom: -10%; right: -10%; animation: floatBlob 15s infinite alternate-reverse; }
-
-    @keyframes floatBlob {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(100px, 50px) scale(1.1); }
-    }
-
-    /* GLASSMORPHISM */
-    .glass {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-
-    .floating-card {
-      position: absolute;
-      padding: 24px;
-      border-radius: 20px;
-      z-index: 5;
-      width: 180px;
-      text-align: center;
-      box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
-    }
-    .card-icon { font-size: 32px; margin-bottom: 8px; }
-    .card-val { font-family: 'Bebas Neue'; font-size: 32px; color: var(--gold); }
-    .card-txt { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
-
-    /* ASYMMETRIC GRID */
-    .asymmetric-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 30px;
-      margin-top: 60px;
-    }
-    .big-card { grid-column: span 7; position: relative; padding: 60px; border-radius: 30px; overflow: hidden; min-height: 400px; display: flex; align-items: flex-end; }
-    .small-card { grid-column: span 5; position: relative; padding: 40px; border-radius: 30px; overflow: hidden; min-height: 350px; }
-    
-    .card-content { position: relative; z-index: 2; }
-    .card-tag { display: inline-block; padding: 4px 12px; border: 1px solid var(--gold); border-radius: 20px; font-size: 10px; color: var(--gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-    .card-title { font-family: 'Bebas Neue'; font-size: 44px; line-height: 1; margin-bottom: 15px; }
-    .card-desc { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 400px; }
-    .card-stats { display: flex; gap: 30px; margin-top: 30px; }
-    .c-stat span { display: block; font-family: 'Bebas Neue'; font-size: 24px; color: var(--gold); }
-    
-    .card-bg-icon { position: absolute; right: -30px; bottom: -30px; font-size: 200px; opacity: 0.03; color: var(--white); pointer-events: none; transition: 0.5s; }
-    .glass:hover .card-bg-icon { transform: scale(1.1) rotate(-10deg); opacity: 0.08; color: var(--gold); }
-
-    /* METHODOLOGY FLOW */
-    .method-flow {
-      display: flex;
-      flex-direction: column;
-      gap: 100px;
-      margin-top: 80px;
-      padding-left: 50px;
-    }
-    .method-item { position: relative; display: flex; gap: 40px; align-items: flex-start; }
-    .method-line { position: absolute; left: 24px; top: 50px; width: 2px; height: 100px; background: linear-gradient(var(--gold), transparent); }
-    .method-circle { width: 50px; height: 50px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 24px; z-index: 2; background: var(--black); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
-    .method-content h3 { font-family: 'Bebas Neue'; font-size: 36px; color: var(--gold); margin-bottom: 10px; }
-    .method-content p { color: var(--muted); max-width: 500px; line-height: 1.6; }
-
-    .method-glow { position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at 10% 30%, rgba(112, 0, 255, 0.1), transparent 50%); pointer-events: none; }
 
     .hero-content {
       position: relative;
@@ -766,98 +766,61 @@
       line-height: 1.7;
     }
 
-    /* RESULTS - MODERN UPGRADE */
+    /* RESULTS */
     .results-section {
-      padding: 160px 60px;
-      background: #050510;
+      padding: 120px 60px;
+      background: var(--gold);
       position: relative;
       overflow: hidden;
     }
 
-    .results-section::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 150%;
-      height: 150%;
-      background: radial-gradient(circle at center, rgba(112, 0, 255, 0.08) 0%, transparent 60%);
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+    .results-section .section-label {
+      color: var(--black);
+    }
+
+    .results-section .section-label::before {
+      background: var(--black);
+    }
+
+    .results-section .section-title {
+      color: var(--black);
     }
 
     .results-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      margin-top: 80px;
+      gap: 24px; /* Increased gap */
+      margin-top: 60px;
     }
 
     .result-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 212, 94, 0.08);
-      border-radius: 32px;
-      padding: 60px 40px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(20px);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 24px;
+      padding: 48px 32px;
+      transition: background 0.4s, transform 0.4s;
     }
 
     .result-card:hover {
-      background: rgba(255, 212, 94, 0.04);
-      border-color: rgba(255, 212, 94, 0.3);
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .result-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(255, 212, 94, 0.05), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.8s;
-    }
-
-    .result-card:hover::after {
-      transform: translateX(100%);
+      background: rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
     }
 
     .result-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 84px;
-      color: var(--white);
-      line-height: 0.8;
-      margin-bottom: 20px;
-      transition: all 0.4s;
-    }
-
-    .result-card:hover .result-num {
-      color: var(--gold);
-      transform: scale(1.1);
+      font-size: 72px;
+      color: var(--black);
+      line-height: 1;
     }
 
     .result-label {
-      font-size: 11px;
-      color: var(--muted);
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.6);
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       font-family: 'Space Mono', monospace;
-    }
-
-    .result-detail {
-        margin-top: 24px;
-        padding-top: 24px;
-        border-top: 1px solid rgba(255, 212, 94, 0.1);
-        font-size: 13px;
-        color: var(--muted);
-        line-height: 1.6;
-    }
-
-    .result-detail strong {
-        color: var(--white);
+      margin-top: 8px;
     }
 
     /* TESTIMONIALS */
@@ -1050,14 +1013,12 @@
     /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
-      visibility: hidden;
       transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     .reveal.visible {
       opacity: 1;
-      visibility: visible;
       transform: translateY(0);
     }
 
@@ -1358,45 +1319,134 @@
       line-height: 1
     }
 
-    /* ROI CALCULATOR STYLES */
-    #calculator {
-      background: rgba(255, 215, 0, 0.02);
-      border-color: rgba(255, 215, 0, 0.1);
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px; /* Increased gap */
+      margin-top: 60px
     }
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      height: 4px;
-      background: rgba(255, 212, 94, 0.1);
-      border-radius: 5px;
-      outline: none;
-      margin: 15px 0;
-      width: 100%;
+
+    .pricing-card {
+      background: rgba(255, 212, 94, 0.03); /* Soft BG */
+      border: 1px solid rgba(255, 212, 94, 0.05); /* Soft border */
+      border-radius: 24px; /* Curves */
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background .4s, border-color .4s, transform .4s;
+      display: flex;
+      flex-direction: column
     }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
+
+    .pricing-card:hover {
+      background: rgba(255, 212, 94, 0.06);
+      border-color: rgba(255, 212, 94, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .pricing-card.featured {
+      background: rgba(255, 212, 94, 0.08); /* Highlight feature */
+      border: 1px solid rgba(255, 212, 94, 0.3);
+      transform: scale(1.02);
+    }
+    
+    .pricing-card.featured:hover {
+       transform: scale(1.02) translateY(-5px);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 20px;
+      right: -32px;
       background: var(--gold);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(255, 212, 94, 0.4);
-      transition: transform 0.2s;
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 40px;
+      transform: rotate(45deg)
     }
-    input[type="range"]::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
-    }
-    .calc-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 212, 94, 0.1);
-      padding: 30px;
-      border-radius: 20px;
-    }
-    .calc-val {
+
+    .pricing-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 8px
+    }
+
+    .pricing-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px
+    }
+
+    .pricing-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
       color: var(--gold);
       line-height: 1;
+      margin-bottom: 4px
+    }
+
+    .pricing-price small {
+      font-size: 16px;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 24px 0;
+      flex-grow: 1
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 212, 94, .06);
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .pricing-features li::before {
+      content: '\2713';
+      color: var(--gold);
+      font-weight: 800
+    }
+
+    .pricing-cta {
+      display: block;
+      text-align: center;
+      background: transparent;
+      border: 1px solid rgba(255, 212, 94, .3);
+      color: var(--gold);
+      padding: 14px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 50px; /* Pill */
+      transition: all .3s;
+      margin-top: auto
+    }
+
+    .pricing-cta:hover {
+      background: var(--gold);
+      color: var(--black)
+    }
+
+    .pricing-card.featured .pricing-cta {
+      background: var(--gold);
+      color: var(--black)
+    }
+
+    .pricing-card.featured .pricing-cta:hover {
+      background: var(--orange)
     }
 
     .team-grid {
@@ -1670,12 +1720,41 @@
       color: var(--black)
     }
 
-    .portfolio-grid {
+    .footer-social {
+      display: flex;
+      gap: 16px
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 212, 94, .15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all .3s;
+      font-size: 16px
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(255, 212, 94, .08)
+    }
+
+    .portfolio-grid,
+    .pricing-grid {
       grid-template-columns: 1fr 1fr
     }
 
     .team-grid {
       grid-template-columns: 1fr 1fr
+    }
+
+    .footer-social {
+      justify-content: center
     }
 
     .contact-form {
@@ -1721,7 +1800,7 @@
       
       .section, .why-section, .process-section, .results-section, .testimonials, .cta-section { padding: 80px 30px !important; }
       
-      .services-grid, .portfolio-grid, .team-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+      .services-grid, .portfolio-grid, .pricing-grid, .team-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
       .process-steps, .results-grid { grid-template-columns: 1fr 1fr !important; }
     }
 
@@ -1730,10 +1809,16 @@
       .hero-title { font-size: clamp(40px, 11vw, 65px) !important; }
       .section-title { font-size: clamp(34px, 8vw, 52px) !important; }
       
-      .asymmetric-grid { grid-template-columns: 1fr !important; }
-      .big-card, .small-card { grid-column: span 1 !important; margin: 0 !important; padding: 40px 30px !important; min-height: auto !important; }
+      .services-grid, .portfolio-grid, .pricing-grid, .team-grid, .process-steps, .results-grid { 
+        grid-template-columns: 1fr !important; 
+        gap: 24px !important;
+      }
       
-      .hero-side-cards { display: none !important; }
+      .service-card, .process-step, .result-card, .testi-card, .pricing-card, .team-card {
+        padding: 40px 30px !important;
+      }
+      
+      .hero-stats { flex-wrap: wrap !important; justify-content: flex-start !important; }
       .contact-form { grid-template-columns: 1fr !important; }
       
       .footer-links { flex-direction: column !important; align-items: center !important; gap: 15px !important; }
@@ -1774,6 +1859,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="blog-index.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="#pricing">Pricing</a></li>
     </ul>
     <a href="#contact" class="nav-cta magnetic-btn">Get Started</a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -1781,7 +1867,7 @@
   <div class="mobile-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#why">Why Us</a>
-    <a href="#process">Process</a><a href="#results">Results</a>
+    <a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#results">Results</a>
     <a href="#faq">FAQ</a><a href="#contact">Contact</a>
   </div>
 
@@ -1789,175 +1875,296 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
-    
-    <!-- Floating Depth Elements -->
-    <div class="hero-blob glow-purple"></div>
-    <div class="hero-blob glow-orange" style="top:60%; right:-10%;"></div>
-
     <div class="hero-content">
-      <div class="hero-tag reveal">Predictable Growth Engine 2.0</div>
+      <div class="hero-tag">Predictable Growth Engine</div>
       <h1 class="hero-title">
-        <span class="reveal" style="display:block">PREDICTABLE</span>
-        <span class="line2 reveal" style="display:block">LEAD GEN FOR</span>
-        <span class="line3 reveal" style="display:block">LOCAL <span style="color:var(--gold)">BRANDS.</span></span>
+        PREDICTABLE
+        <span class="line2">LEAD GEN FOR</span>
+        <span class="line3 glitch" data-text="LOCAL BRANDS.">LOCAL BRANDS.</span>
       </h1>
-      <p class="hero-sub reveal">Metrix Mind helps clinics and local service businesses generate qualified leads through surgical Google Ads & SEO. Results in 30 days or we work for free.</p>
-      
-      <div class="hero-actions reveal">
-        <a href="#contact" class="btn-primary magnetic-btn">Book Free Audit →</a>
-        <a href="#results" class="btn-ghost"><span></span> View Proof</a>
+      <p class="hero-sub">Metrix Mind helps clinics and local service businesses generate qualified leads through Google Ads, Local SEO, and high-converting landing pages. Results in 30 days or we work for free.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary magnetic-btn">Book Free Lead Audit →</a>
+        <a href="#results" class="btn-ghost"><span></span> See Proof</a>
       </div>
     </div>
-
-    <!-- Floating UI Cards (Asymmetric/Experimental) -->
-    <div class="hero-side-cards">
-      <div class="floating-card glass reveal" style="transform: rotate(-12deg); left: -100px; top: 20%;">
-        <div class="card-icon">📈</div>
-        <div class="card-val">+340%</div>
-        <div class="card-txt">Avg. ROI</div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Brands Scaled</div>
       </div>
-      <div class="floating-card glass reveal" style="transform: rotate(8deg); right: -50px; bottom: 15%;">
-        <div class="card-icon">⚡</div>
-        <div class="card-val">500+</div>
-        <div class="card-txt">Brands Scaled</div>
+      <div class="stat-item">
+        <div class="stat-num">₹12Cr+</div>
+        <div class="stat-label">Revenue Generated</div>
       </div>
-    </div>
-
-    <div class="hero-scroll-indicator">
-      <div class="mouse"></div>
-      <span>SCROLL TO EXPLORE</span>
-    </div>
-  </section>
-
-    <!-- SERVICES OVERHAUL (Asymmetric) -->
-  <section class="section" id="services" style="overflow:visible;">
-    <div class="section-label">The Arsenal</div>
-    <h2 class="section-title reveal">ELITE <span style="color:var(--gold)">LEAD GEN</span> SYSTEMS</h2>
-    
-    <div class="asymmetric-grid">
-      <!-- 01 LOCAL SEO -->
-      <div class="big-card glass reveal" onclick="window.location.href='local-seo.html'">
-        <div class="card-content">
-          <div class="card-tag">#1 Rankings</div>
-          <h3 class="card-title">Local SEO Domination</h3>
-          <p class="card-desc">We make you the "Unavoidable Choice" in your city. From Google Maps to top-of-page visibility for high-intent clinical keywords.</p>
-          <div class="card-stats">
-            <div class="c-stat"><span>3x</span> Calls</div>
-            <div class="c-stat"><span>90 Days</span> Maturity</div>
-          </div>
-        </div>
-        <div class="card-bg-icon"><i class="fas fa-map-marker-alt"></i></div>
-      </div>
-
-      <!-- 02 GOOGLE ADS -->
-      <div class="small-card glass reveal" style="margin-top: 80px;" onclick="window.location.href='google-ads-agency.html'">
-        <div class="card-tag">High Intent</div>
-        <h3 class="card-title">Surgical Google Ads</h3>
-        <p class="card-desc">Capturing intent exactly when the patient searches. No junk leads, only high-conversion appointments.</p>
-        <div class="card-bg-icon" style="bottom:-20px; right:-20px;"><i class="fab fa-google"></i></div>
-      </div>
-
-      <!-- 03 META ADS -->
-      <div class="small-card glass reveal" style="margin-top: -40px;" onclick="window.location.href='meta-ads-agency.html'">
-        <div class="card-tag">Scaling</div>
-        <h3 class="card-title">Meta Social Scaling</h3>
-        <p class="card-desc">Interrupt the scroll with authority. We build brand omnipresence that converts followers into footfall.</p>
-        <div class="card-bg-icon"><i class="fab fa-facebook-f"></i></div>
-      </div>
-
-      <!-- 04 LEAD GEN MACHINERY -->
-      <div class="big-card glass reveal" style="background: linear-gradient(135deg, rgba(255,215,0,0.05), transparent);" onclick="window.location.href='lead-generation-services.html'">
-        <div class="card-content">
-          <div class="card-tag">The Engine</div>
-          <h3 class="card-title">Lead Gen Machinery</h3>
-          <p class="card-desc">A complete 'LiftUp' funnel architecture. From lead magnets to qualification bots, we build the system that sells for you.</p>
-          <div class="card-stats">
-            <div class="c-stat"><span>400+</span>Avg Leads/Mo</div>
-            <div class="c-stat"><span>Verified</span> ROAS</div>
-          </div>
-        </div>
-        <div class="card-bg-icon" style="opacity:0.05;"><i class="fas fa-rocket"></i></div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client Retention</div>
       </div>
     </div>
   </section>
 
-  <!-- METHODOLOGY (Replaces Process) -->
-  <section class="section" style="background:var(--dim); position:relative;">
-    <div class="method-glow"></div>
-    <div class="section-label">The Method</div>
-    <h2 class="section-title reveal">OUR <span style="color:var(--gold)">METHODOLOGY</span></h2>
-    
-    <div class="method-flow">
-      <div class="method-item reveal">
-        <div class="method-line"></div>
-        <div class="method-circle">01</div>
-        <div class="method-content">
-          <h3>Surgical Audit</h3>
-          <p>We dissect your market gap and competitor leaks.</p>
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item">SEO DOMINATION</div>
+      <div class="marquee-item">PAID ADS</div>
+      <div class="marquee-item">SOCIAL MEDIA</div>
+      <div class="marquee-item">AI STRATEGY</div>
+      <div class="marquee-item">BRAND IDENTITY</div>
+      <div class="marquee-item">CONTENT CREATION</div>
+      <div class="marquee-item">LEAD GENERATION</div>
+      <div class="marquee-item">EMAIL MARKETING</div>
+      <div class="marquee-item">SEO DOMINATION</div>
+      <div class="marquee-item">PAID ADS</div>
+      <div class="marquee-item">SOCIAL MEDIA</div>
+      <div class="marquee-item">AI STRATEGY</div>
+      <div class="marquee-item">BRAND IDENTITY</div>
+      <div class="marquee-item">CONTENT CREATION</div>
+      <div class="marquee-item">LEAD GENERATION</div>
+      <div class="marquee-item">EMAIL MARKETING</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title reveal">SERVICES THAT<br><span style="color:var(--gold)">ACTUALLY</span> WORK</h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <span class="service-icon">🤖</span>
+        <div class="service-name">AI-Powered Ads</div>
+        <p class="service-desc">Our AI doesn't guess — it knows. Machine learning algorithms that optimize your ad spend
+          in real-time for maximum ROI on Google & Meta.</p>
+        <div class="service-arrow">Explore → </div>
+      </div>
+      <div class="service-card" onclick="window.location.href='local-seo.html'" style="cursor:pointer;">
+        <div class="service-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h3 class="service-title">Local SEO Domination</h3>
+        <p class="service-desc">Be the first clinic seen in your city. We optimize your GMB and website to dominate local map searches and drive foot traffic.</p>
+        <div class="service-stats">
+          <div class="stat"><span class="stat-value">#1</span><span class="stat-label">Map Rankings</span></div>
+          <div class="stat"><span class="stat-value">3x</span><span class="stat-label">Call Volume</span></div>
+        </div>
+        <a href="local-seo.html" class="service-link">View Service Strategy →</a>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='google-ads-agency.html'" style="cursor:pointer;">
+        <div class="service-icon"><i class="fab fa-google"></i></div>
+        <h3 class="service-title">Google Ads (High-Intent)</h3>
+        <p class="service-desc">Reach prospects exactly when they're searching for your services. We manage patient-acquisition funnels with surgical precision.</p>
+        <div class="service-stats">
+          <div class="stat"><span class="stat-value">4.8x</span><span class="stat-label">Avg ROAS</span></div>
+          <div class="stat"><span class="stat-value">₹80</span><span class="stat-label">Avg CPL</span></div>
+        </div>
+        <a href="google-ads-agency.html" class="service-link">View Service Strategy →</a>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='meta-ads-agency.html'" style="cursor:pointer;">
+        <div class="service-icon"><i class="fab fa-facebook"></i></div>
+        <h3 class="service-title">Social Scaling (Meta)</h3>
+        <p class="service-desc">Stop the scroll and build trust. Our FB & Instagram ad systems build brand authority while generating qualified inquiries daily.</p>
+        <div class="service-stats">
+          <div class="stat"><span class="stat-value">5.5%</span><span class="stat-label">Avg CTR</span></div>
+          <div class="stat"><span class="stat-value">98%</span><span class="stat-label">Client Retention</span></div>
+        </div>
+        <a href="meta-ads-agency.html" class="service-link">View Service Strategy →</a>
+      </div>
+
+      <div class="service-card" onclick="window.location.href='lead-generation-services.html'" style="cursor:pointer;">
+        <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+        <h3 class="service-title">Lead Gen Machinery</h3>
+        <p class="service-desc">We build the entire 'LiftUp' funnel: from landing pages to lead qualification, ensuring you only talk to high-intent prospects.</p>
+        <div class="service-stats">
+          <div class="stat"><span class="stat-value">400+</span><span class="stat-label">Leads/Mo Avg</span></div>
+          <div class="stat"><span class="stat-value">30%</span><span class="stat-label">Conv Rate</span></div>
+        </div>
+        <a href="lead-generation-services.html" class="service-link">View Service Strategy →</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <span class="service-num">03</span>
+        <span class="service-icon">🔥</span>
+        <div class="service-name">Social Media Blitz</div>
+        <p class="service-desc">Viral content engineered by AI. We turn your brand into a content powerhouse that stops
+          thumbs and converts scrollers into buyers.</p>
+        <div class="service-arrow">Explore → </div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <span class="service-num">04</span>
+        <span class="service-icon">⚡</span>
+        <div class="service-name">Lead Generation</div>
+        <p class="service-desc">Precision-targeted leads that actually close. Our AI identifies your perfect customer
+          and puts your offer right in front of them.</p>
+        <div class="service-arrow">Explore → </div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <span class="service-num">05</span>
+        <span class="service-icon">🎯</span>
+        <div class="service-name">Brand Identity</div>
+        <p class="service-desc">Your brand should make people stop and stare. We craft identities so powerful that
+          customers become lifetime evangelists.</p>
+        <div class="service-arrow">Explore → </div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.3s">
+        <span class="service-num">06</span>
+        <span class="service-icon">💌</span>
+        <div class="service-name">Email Marketing</div>
+        <p class="service-desc">AI-personalized sequences that feel human. Open rates that embarrass industry averages.
+          Revenue on autopilot, 24/7.</p>
+        <div class="service-arrow">Explore → </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section" id="why">
+    <div class="section-label">Why Metrix Mind</div>
+    <h2 class="section-title reveal">WHY WE'RE<br><span style="color:var(--gold)">DIFFERENT</span></h2>
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="big-text">AI</div>
+        <div class="why-points">
+          <div class="why-point reveal">
+            <div class="why-icon">🧠</div>
+            <div>
+              <div class="why-point-title">AI That Actually Thinks</div>
+              <p class="why-point-desc">Not buzzwords — real AI systems that analyze data, predict trends, and optimize
+                campaigns while you sleep.</p>
+            </div>
+          </div>
+          <div class="why-point reveal" style="transition-delay:0.15s">
+            <div class="why-icon">📊</div>
+            <div>
+              <div class="why-point-title">Data-Driven, Zero Guesswork</div>
+              <p class="why-point-desc">Every decision is backed by numbers. No gut feelings, no vanity metrics — just
+                hard results that move your bottom line.</p>
+            </div>
+          </div>
+          <div class="why-point reveal" style="transition-delay:0.3s">
+            <div class="why-icon">🚀</div>
+            <div>
+              <div class="why-point-title">Results in 30 Days</div>
+              <p class="why-point-desc">We move fast. Real traction in 30 days or we work for free. That's how confident
+                we are in what we deliver.</p>
+            </div>
+          </div>
+          <div class="why-point reveal" style="transition-delay:0.45s">
+            <div class="why-icon">🛡️</div>
+            <div>
+              <div class="why-point-title">Dedicated War Room Team</div>
+              <p class="why-point-desc">Your brand gets a dedicated team obsessed with your growth. Not a junior intern
+                — senior strategists who eat data for breakfast.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="method-item reveal">
-        <div class="method-line"></div>
-        <div class="method-circle">02</div>
-        <div class="method-content">
-          <h3>Funnel Forge</h3>
-          <p>Building high-conversion assets that capture intent.</p>
+      <div style="position:relative;">
+        <div
+          style="background: linear-gradient(135deg, rgba(255,212,94,0.06), rgba(123,47,255,0.06)); border: 1px solid rgba(255,212,94,0.12); padding: 60px 48px; height: 100%; display:flex; flex-direction:column; justify-content:center; gap:32px;">
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:var(--gold);">OUR
+            PROMISE</div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,5vw,64px); line-height:1.1;">IF YOU
+            DON'T GROW, <span style="color:var(--orange)">WE DON'T EAT.</span></div>
+          <p style="color:var(--muted); font-size:15px; line-height:1.8;">We don't just take your money and run reports.
+            We're performance partners — our success is directly tied to yours. No results? No invoice.</p>
+          <div style="width:60px; height:2px; background:linear-gradient(90deg,var(--gold),var(--orange));"></div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
+              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">Performance-based pricing
+                available</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
+              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">30-day money-back
+                guarantee</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
+              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">No long-term lock-in
+                contracts</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
+              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">24/7 campaign
+                monitoring</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="method-item reveal">
-        <div class="method-line"></div>
-        <div class="method-circle">03</div>
-        <div class="method-content">
-          <h3>Omnipresence</h3>
-          <p>Deploying multi-channel ads to dominate your niche.</p>
-        </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section" id="process">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title reveal">THE <span style="color:var(--gold)">LIFTUP</span><br>PROCESS</h2>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Deep Audit</div>
+        <p class="step-desc">We dissect your brand, competitors, and market. 360° analysis that reveals exactly where
+          your money is being left on the table.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.15s">
+        <div class="step-num">02</div>
+        <div class="step-title">AI Strategy</div>
+        <p class="step-desc">Our AI builds a custom battle plan. Every channel, every rupee, every touchpoint mapped for
+          maximum impact.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.3s">
+        <div class="step-num">03</div>
+        <div class="step-title">Execute Fast</div>
+        <p class="step-desc">Speed is money. We launch, test, and iterate at machine speed. While others plan, we're
+          already scaling what works.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.45s">
+        <div class="step-num">04</div>
+        <div class="step-title">Scale & Win</div>
+        <p class="step-desc">Double down on winners, cut losers instantly. Compounding growth that makes your initial
+          investment look like a rounding error.</p>
       </div>
     </div>
   </section>
 
   <!-- RESULTS -->
   <section class="results-section" id="results">
-    <div class="hero-blob glow-purple" style="opacity:0.2; top:10%; left:20%;"></div>
-    <div class="hero-blob glow-orange" style="opacity:0.1; bottom:10%; right:10%;"></div>
-    
-    <div class="section-label">Performance</div>
-    <h2 class="section-title reveal">PROVEN <span style="color:var(--gold)">LEAD GEN</span> AUTHORITY</h2>
+    <div class="section-label">The Numbers</div>
+    <h2 class="section-title reveal">RESULTS THAT<br>SPEAK LOUDER</h2>
     <div class="results-grid">
       <div class="result-card reveal">
-        <div class="result-num" data-target="500">0+</div>
+        <div class="result-num">500+</div>
         <div class="result-label">Brands Scaled</div>
-        <div class="result-detail">
-          <strong>120+</strong> Clinics Dominated<br>
-          <strong>150+</strong> E-commerce Scaled<br>
-          <strong>80+</strong> Real Estate Systems
+        <div style="font-size:11px; color:rgba(0,0,0,0.5); margin-top:12px; font-family:'Space Mono', monospace;">
+          • 120+ Clinics<br>
+          • 80+ Real Estate<br>
+          • 150+ E-commerce<br>
+          • 150+ Local Services
         </div>
       </div>
       <div class="result-card reveal" style="transition-delay:0.1s">
-        <div class="result-num" data-target="12">0Cr+</div>
+        <div class="result-num">₹12Cr+</div>
         <div class="result-label">Client Revenue</div>
-        <div class="result-detail">
-          Direct attributed revenue generated across <strong>2023-2025</strong> advertising cycles.
+        <div style="font-size:11px; color:rgba(0,0,0,0.5); margin-top:12px; font-family:'Space Mono', monospace;">
+          Verified across Google Ads & Meta dashboards (2023-2025).
         </div>
       </div>
       <div class="result-card reveal" style="transition-delay:0.2s">
-        <div class="result-num" data-target="340">0%</div>
+        <div class="result-num">340%</div>
         <div class="result-label">Avg. ROI</div>
-        <div class="result-detail">
-          <strong>4.8x</strong> Verified ROAS<br>
-          <strong>2.4%</strong> Average CTR<br>
-          <strong>₹42</strong> Avg Cost Per Lead
+        <div style="font-size:11px; color:rgba(0,0,0,0.5); margin-top:12px; font-family:'Space Mono', monospace;">
+          • 2.4% Avg CTR<br>
+          • ₹42 Avg CPL<br>
+          • 4.8x Avg ROAS
         </div>
       </div>
       <div class="result-card reveal" style="transition-delay:0.3s">
-        <div class="result-num" data-target="98">0%</div>
+        <div class="result-num">98%</div>
         <div class="result-label">Retention Rate</div>
-        <div class="result-detail">
-          Calculated for active <strong>24-month</strong> retainers with clinical partners.
+        <div style="font-size:11px; color:rgba(0,0,0,0.5); margin-top:12px; font-family:'Space Mono', monospace;">
+          Calculated over 24-month timeframe for active retainer clients.
         </div>
       </div>
     </div>
-    <div style="margin-top:60px; text-align:center; font-size:11px; color:var(--muted); font-family:'Space Mono', monospace; opacity:0.5;">
-      VERIFIED VIA GOOGLE ADS & META BUSINESS SUITE · 2025 DATA HUD
+    <div style="margin-top:40px; text-align:center; font-size:12px; color:var(--black); opacity:0.7; font-family:'Space Mono', monospace;">
+      *30 days or free: Exact terms apply to ad spend optimization targets agreed upon at kickoff.
     </div>
   </section>
 
@@ -2062,62 +2269,55 @@
     </div>
   </section>
 
-  <!-- ROI CALCULATOR (Modern Tool) -->
-  <section class="section glass" id="calculator" style="margin: 60px; border-radius: 40px; border: 1px solid var(--glass-border); padding: 80px 40px;">
-    <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:60px; align-items:center;">
-      <div>
-        <div class="section-label">Revenue Engine</div>
-        <h2 class="section-title reveal">LEAD ROI<br><span style="color:var(--gold)">PREDICTOR</span></h2>
-        <p style="color:var(--muted); margin-bottom:40px; font-size:15px; max-width:400px;">See how much revenue your clinic is leaving on the table. Move the sliders to predict your growth.</p>
-        
-        <div style="display:flex; flex-direction:column; gap:30px;">
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-              <span style="font-size:12px; letter-spacing:1px; color:var(--white);">MONTHLY AD SPEND</span>
-              <span id="spendVal" style="color:var(--gold); font-weight:800;">₹50,000</span>
-            </div>
-            <input type="range" id="spendRange" min="10000" max="500000" step="5000" value="50000" oninput="updateROI()">
-          </div>
-          <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-              <span style="font-size:12px; letter-spacing:1px; color:var(--white);">AVG. TREATMENT VALUE</span>
-              <span id="ticketVal" style="color:var(--gold); font-weight:800;">₹15,000</span>
-            </div>
-            <input type="range" id="ticketRange" min="5000" max="100000" step="1000" value="15000" oninput="updateROI()">
-          </div>
-        </div>
+  <!-- PRICING -->
+  <section class="section" id="pricing" style="background:linear-gradient(135deg,#0c0c14 0%,#050507 50%,#0f0a1a 100%)">
+    <div class="section-label">Investment</div>
+    <h2 class="section-title reveal">PACKAGES THAT<br><span style="color:var(--gold)">SCALE</span> WITH YOU</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-name">STARTER</div>
+        <div class="pricing-desc">Trust & Visibility Foundation.</div>
+        <div class="pricing-price">₹25K<small>/month</small></div>
+        <ul class="pricing-features">
+          <li>Local SEO Setup & GMB</li>
+          <li>Basic Lead Funnel</li>
+          <li>4 Posts/Week (Trust building)</li>
+          <li>Monthly Growth Report</li>
+          <li>Email Support</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Get Started →</a>
       </div>
-
-      <div class="calc-card reveal">
-        <div style="margin-bottom:30px;">
-          <div style="font-size:11px; color:var(--muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED NEW REVENUE</div>
-          <div id="estRev" class="calc-val">₹4,50,000</div>
-        </div>
-        <div style="margin-bottom:30px;">
-          <div style="font-size:11px; color:var(--muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED LEADS / MO</div>
-          <div id="estLeads" class="calc-val">45</div>
-        </div>
-        <a href="#contact" class="btn-primary" style="width:100%; text-align:center;">Claim This Growth →</a>
+      <div class="pricing-card featured reveal" style="transition-delay:.15s">
+        <div class="pricing-badge">POPULAR</div>
+        <div class="pricing-name">GROWTH</div>
+        <div class="pricing-desc">The Lead Generation Engine.</div>
+        <div class="pricing-price">₹65K<small>/month</small></div>
+        <ul class="pricing-features">
+          <li>Everything in Starter</li>
+          <li>Google + Meta Lead Ads</li>
+          <li>Appointment Booking Flow</li>
+          <li>Landing Page Optimization</li>
+          <li>Dedicated Account Manager</li>
+          <li>Weekly Strategy Calls</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Start Growing →</a>
+      </div>
+      <div class="pricing-card reveal" style="transition-delay:.3s">
+        <div class="pricing-name">DOMINATION</div>
+        <div class="pricing-desc">Multi-Channel Scale System.</div>
+        <div class="pricing-price">₹1.5L<small>/month</small></div>
+        <ul class="pricing-features">
+          <li>Everything in Growth</li>
+          <li>Full AI Automation Stack</li>
+          <li>Video Creative Assets</li>
+          <li>Retargeting Omnipresence</li>
+          <li>Performance-based Upside</li>
+          <li>24/7 Priority War Room</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Dominate Now →</a>
       </div>
     </div>
   </section>
-
-  <script>
-    function updateROI() {
-      const spend = document.getElementById('spendRange').value;
-      const ticket = document.getElementById('ticketRange').value;
-      
-      document.getElementById('spendVal').textContent = '₹' + parseInt(spend).toLocaleString();
-      document.getElementById('ticketVal').textContent = '₹' + parseInt(ticket).toLocaleString();
-      
-      // Conservative logic: ₹1100 per qualified clinical lead
-      const leads = Math.floor(spend / 1100);
-      const revenue = Math.floor(leads * 0.65 * ticket); // 65% close/show rate for clinics
-      
-      document.getElementById('estLeads').textContent = leads;
-      document.getElementById('estRev').textContent = '₹' + revenue.toLocaleString();
-    }
-  </script>
 
   <!-- TEAM -->
   <section class="section" id="team">
@@ -2125,16 +2325,28 @@
     <h2 class="section-title reveal">MEET THE<br><span style="color:var(--gold)">WAR ROOM</span> TEAM</h2>
     <div class="team-grid">
       <div class="team-card reveal">
-        <div class="team-avatar" style="background-image: url('assets/team/chandan.png'); background-size: cover; background-position: center;"></div>
-        <div class="team-name">CHANDAN <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--purple),var(--orange))">AK</div>
+        <div class="team-name">ARUN KUMAR <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
         <div class="team-role">Founder & CEO</div>
-        <p class="team-bio">Braveheart Founder. Scaling clinics to 8-figure months with data-driven surgical precision.</p>
+        <p class="team-bio">Built and scaled 200+ local brands. Google Ads & Meta Certified Expert.</p>
       </div>
       <div class="team-card reveal" style="transition-delay:.1s">
-        <div class="team-avatar" style="background-image: url('assets/team/neetu.png'); background-size: cover; background-position: center;"></div>
-        <div class="team-name">NEETU <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
-        <div class="team-role">Co-Founder & Creative Director</div>
-        <p class="team-bio">Creative Visionary. Crafting psychological funnels and brand stories that convert visitors into loyal clients.</p>
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--gold),var(--orange))">NR</div>
+        <div class="team-name">NEHA REDDY <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
+        <div class="team-role">Ex-Google · AI Strategy</div>
+        <p class="team-bio">ML engineer. Specializes in intent-based audience modelling for clinics.</p>
+      </div>
+      <div class="team-card reveal" style="transition-delay:.2s">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--orange),var(--purple))">VS</div>
+        <div class="team-name">VIKRAM SINGH <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
+        <div class="team-role">Creative Lead</div>
+        <p class="team-bio">Conversion-first designer. Focuses on high-trust landing page assets.</p>
+      </div>
+      <div class="team-card reveal" style="transition-delay:.3s">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--purple),var(--gold))">PM</div>
+        <div class="team-name">PRIYA MENON <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
+        <div class="team-role">Performance Lead</div>
+        <p class="team-bio">Managed ₹50Cr+ ad spend. Specialist in Local Service Ads (LSA).</p>
       </div>
     </div>
   </section>
@@ -2226,10 +2438,10 @@
         <div class="footer-logo"><img src="assets/logo.png" alt="BL Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
         <div style="margin-top:20px; font-size:12px; color:var(--muted); line-height:1.6; font-family:'Space Mono', monospace;">
           <strong>Metrix Mind HQ</strong><br>
-          NH 10, West Cabin Block, Mundka,<br>
-          New Delhi, Delhi, 110041<br>
+          Tech Park Towers, Sector 62<br>
+          Noida, UP 201301<br>
           <a href="tel:+919582589655" style="color:var(--gold); text-decoration:none;">+91 95825 89655</a><br>
-          <a href="mailto:metrixmind.in@gmail.com" style="color:var(--gold); text-decoration:none;">metrixmind.in@gmail.com</a>
+          <a href="mailto:hello@brandliftup.in" style="color:var(--gold); text-decoration:none;">hello@brandliftup.in</a>
         </div>
       </div>
       <div>
@@ -2252,11 +2464,10 @@
     </div>
     <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:24px;">
       <div class="footer-social">
-        <a href="https://www.instagram.com/metrixmind.in/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/metrixmind" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.youtube.com/@metrixmindin" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/brand_liftup" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/brand-liftup-7305353b1/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com/brandliftup" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://facebook.com/brandliftup" target="_blank"><i class="fab fa-facebook-f"></i></a>
       </div>
       <div class="footer-copy">© 2025-2026 Metrix Mind. Registered in India. All Rights Reserved.</div>
     </div>
@@ -2265,19 +2476,49 @@
       class="fab fa-whatsapp"></i></a>
   <a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
 
-  <script src="assets/main.js"></script>
   <script>
-    // Page Specific Logic
+    // CURSOR
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+    });
+
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '60px';
+        ring.style.height = '60px';
+        ring.style.borderColor = 'var(--orange)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '40px';
+        ring.style.height = '40px';
+        ring.style.borderColor = 'var(--gold)';
+      });
+    });
+
+
     // COUNTER ANIMATION
     function animateCount(el, target, prefix = '', suffix = '') {
-      let start = null;
-      const duration = 2500;
+      let start = 0;
+      const duration = 2000;
       const step = (timestamp) => {
         if (!start) start = timestamp;
         const progress = Math.min((timestamp - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4); // Smoother ease
+        const eased = 1 - Math.pow(1 - progress, 3);
         const val = Math.floor(eased * target);
-        el.textContent = prefix + val.toLocaleString() + suffix;
+        el.textContent = prefix + val + suffix;
         if (progress < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
@@ -2286,78 +2527,143 @@
     const resultsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const nums = entry.target.querySelectorAll('.result-num');
+          const nums = entry.target.querySelectorAll('.result-num, .stat-num');
           nums.forEach(num => {
-            const target = parseFloat(num.getAttribute('data-target'));
-            const originalText = num.textContent;
-            let prefix = '', suffix = '';
-            
-            if (originalText.includes('Cr+')) { prefix = '₹'; suffix = 'Cr+'; }
-            else if (originalText.includes('%')) { suffix = '%'; }
-            else if (originalText.includes('+')) { suffix = '+'; }
-            
-            animateCount(num, target, prefix, suffix);
+            const text = num.textContent;
+            if (text.includes('₹12Cr')) animateCount(num, 12, '₹', 'Cr+');
+            else if (text.includes('340')) animateCount(num, 340, '', '%');
+            else if (text.includes('98')) animateCount(num, 98, '', '%');
+            else if (text.includes('500')) animateCount(num, 500, '', '+');
           });
           resultsObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
-    document.querySelectorAll('.results-section').forEach(el => resultsObserver.observe(el));
+    document.querySelectorAll('.results-section, .hero-stats').forEach(el => resultsObserver.observe(el));
 
+    // HAMBURGER
+    const hb = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu'), mo = document.getElementById('mobileOverlay');
+    if (hb) {
+      hb.onclick = () => { hb.classList.toggle('active'); mm.classList.toggle('active'); mo.classList.toggle('active') };
+      mo.onclick = () => { hb.classList.remove('active'); mm.classList.remove('active'); mo.classList.remove('active') };
+      mm.querySelectorAll('a').forEach(a => a.onclick = () => { hb.classList.remove('active'); mm.classList.remove('active'); mo.classList.remove('active') })
+    }
     // FAQ
     document.querySelectorAll('.faq-q').forEach(q => q.onclick = () => { const i = q.parentElement, w = i.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('active')); if (!w) i.classList.add('active') });
-    
     // BACK TOP
     const bt = document.getElementById('backTop');
-    if (bt) {
-      window.addEventListener('scroll', () => { if (window.scrollY > 600) bt.classList.add('visible'); else bt.classList.remove('visible') });
-    }
-
+    window.addEventListener('scroll', () => { if (window.scrollY > 600) bt.classList.add('visible'); else bt.classList.remove('visible') });
     // FORM
     const cf = document.getElementById('contactForm');
     if (cf) cf.onsubmit = e => { e.preventDefault(); document.getElementById('formStatus').textContent = '✓ Message sent! We\'ll call within 24hrs.'; cf.reset(); setTimeout(() => document.getElementById('formStatus').textContent = '', 5000) };
 
-    // Preloader Animation
+    // ============================================
+    // NEW ADVANCED ANIMATIONS (GSAP)
+    // ============================================
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. Preloader Animation
     window.addEventListener('load', () => {
       const tl = gsap.timeline({
-        onComplete: () => {
-          const heroTl = gsap.timeline();
-          heroTl.from('.hero-tag', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' });
-          heroTl.from('.hero-title span', { y: 100, opacity: 0, duration: 1, stagger: 0.2, ease: 'power4.out' }, "-=0.4");
-          heroTl.from('.hero-sub', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out' }, "-=0.6");
-          heroTl.from('.hero-actions', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out' }, "-=0.6");
-        }
+        onComplete: initHeroAnimations
       });
 
+      // Simple bar load
       tl.to('#preloaderBar', { width: '100%', duration: 1.2, ease: 'power3.inOut' })
+        // Slide up text
         .to('.preloader-text', { y: '0%', duration: 0.8, ease: 'power3.out' }, "-=0.4")
-        .to('#preloader', { yPercent: -100, duration: 1, ease: 'power4.inOut', delay: 0.3 });
+        // Fade out preloader wrapper
+        .to('#preloader', { yPercent: -100, duration: 1, ease: 'power4.inOut', delay: 0.3 })
     });
 
-    // Parallax Hero Cards
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX - window.innerWidth / 2) * 0.05;
-      const y = (e.clientY - window.innerHeight / 2) * 0.05;
-      gsap.to('.floating-card', { x: x, y: y, duration: 1, ease: 'power2.out' });
+    // 3. Hero Animations (Called after preloader)
+    function initHeroAnimations() {
+      const heroTl = gsap.timeline();
+      
+      heroTl.from('.hero-tag', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' })
+            .from('.hero-title', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' }, "-=0.6")
+            .from('.hero-sub', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, "-=0.7")
+            .from('.hero-actions a', { y: 20, opacity: 0, duration: 0.6, stagger: 0.2, ease: 'power2.out' }, "-=0.6")
+            .from('.stat-item', { y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out' }, "-=0.2");
+    }
+
+    // 4. Scroll Revels for .reveal elements
+    // Overriding the previous CSS class intersection observer logic
+    document.querySelectorAll('.reveal').forEach((el) => {
+      // Set initial state
+      gsap.set(el, { y: 60, opacity: 0 });
+      
+      gsap.to(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%", // when top of element hits 85% of viewport
+          toggleActions: "play none none reverse",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out"
+      });
     });
 
-    // Methodology Line Draw
-    document.querySelectorAll('.method-item').forEach((item) => {
-      const line = item.querySelector('.method-line');
-      if(line) {
-        gsap.from(line, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top center",
-            end: "bottom center",
-            scrub: true
-          },
-          scaleY: 0,
-          transformOrigin: "top"
+    // 5. Staggered Grid Reveals (Optional extra polish for grids)
+    const grids = ['.services-grid', '.why-points', '.process-steps', '.results-grid', '.testi-grid', '.portfolio-grid', '.pricing-grid', '.team-grid'];
+    grids.forEach(selector => {
+      const grid = document.querySelector(selector);
+      if (grid) {
+        const cards = grid.children;
+        gsap.set(cards, { y: 50, opacity: 0 });
+        ScrollTrigger.create({
+          trigger: grid,
+          start: "top 80%",
+          onEnter: () => {
+            gsap.to(cards, {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "power3.out",
+              overwrite: "auto"
+            });
+          }
         });
       }
     });
+
+
+    // 6. Magnetic Buttons (Premium Feel)
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        // Calculate distance from center of button
+        const h = rect.width / 2;
+        const v = rect.height / 2;
+        const x = e.clientX - rect.left - h;
+        const y = e.clientY - rect.top - v;
+        
+        // Move button slightly
+        gsap.to(btn, {
+          x: x * 0.4,
+          y: y * 0.4,
+          duration: 0.5,
+          ease: 'power3.out'
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        // Reset to original position
+        gsap.to(btn, {
+          x: 0,
+          y: 0,
+          duration: 0.7,
+          ease: 'elastic.out(1, 0.3)'
+        });
+      });
+    });
   </script>
 </body>
+
 </html>
