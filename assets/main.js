@@ -143,9 +143,38 @@ const initMagnetic = () => {
   });
 };
 
+// 5. Theme Manager
+class ThemeManager {
+  constructor() {
+    this.toggleBtn = document.getElementById('themeToggle');
+    this.currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    this.init();
+  }
+
+  init() {
+    if (this.currentTheme === 'light') {
+      document.body.classList.add('light-mode');
+    }
+    
+    if (this.toggleBtn) {
+      this.toggleBtn.addEventListener('click', () => this.toggleTheme());
+    }
+  }
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', this.currentTheme);
+    
+    // Optional: Add a quick GSAP animation on toggle
+    gsap.fromTo('body', { opacity: 0.9 }, { opacity: 1, duration: 0.4 });
+  }
+}
+
 // Initialize everything on load
 window.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initReveals();
   initMagnetic();
+  new ThemeManager();
 });

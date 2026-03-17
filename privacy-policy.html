@@ -8,15 +8,31 @@
   <meta name="robots" content="noindex">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { background: #050507; color: #f0eee8; font-family: 'Outfit', sans-serif; padding: 100px 60px; line-height: 1.8; }
-    h1 { font-size: 60px; margin-bottom: 40px; color: #FFD45E; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
-    h2 { font-size: 24px; margin-top: 40px; color: #FFD45E; }
-    p { color: #6b6b7a; max-width: 800px; }
-    a { color: #FFD45E; text-decoration: none; }
-    @media (max-width: 768px) { body { padding: 60px 30px; } }
+    :root {
+      --bg: #050507;
+      --text: #f0eee8;
+      --muted: #6b6b7a;
+      --gold: #FFD45E;
+    }
+    body.light-mode {
+      --bg: #f8f8fa;
+      --text: #1a1a1c;
+      --muted: #666677;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; padding: 100px 60px; line-height: 1.8; transition: background 0.3s, color 0.3s; }
+    h1 { font-size: 60px; margin-bottom: 40px; color: var(--gold); font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
+    h2 { font-size: 24px; margin-top: 40px; color: var(--gold); }
+    p { color: var(--muted); max-width: 800px; }
+    a { color: var(--gold); text-decoration: none; }
+    .theme-toggle { position: fixed; top: 40px; right: 40px; background: none; border: 1px solid var(--gold); color: var(--gold); padding: 10px; cursor: pointer; border-radius: 5px; font-family: 'Space Mono', monospace; font-size: 10px; }
+    @media (max-width: 768px) { body { padding: 60px 30px; } .theme-toggle { top: 20px; right: 20px; } }
   </style>
 </head>
 <body>
+  <div class="cursor-ring" id="cursorRing"></div>
+  
+  <button id="themeToggle" class="theme-toggle">MODE</button>
+  
   <h1>PRIVACY POLICY</h1>
   <p>Last Updated: March 2026</p>
   
@@ -32,7 +48,21 @@
   <h2>4. Contact Us</h2>
   <p>For any privacy-related inquiries, please email us at <a href="mailto:metrixmind.in@gmail.com">metrixmind.in@gmail.com</a></p>
   
-  <p style="margin-top:60px;"><a href="/">← Back to Home</a></p>
+  <p style="margin-top:60px;"><a href="index.html">← Back to Home</a></p>
+  
+  <script>
+    const themeBtn = document.getElementById('themeToggle');
+    const theme = localStorage.getItem('theme');
+    if (theme === 'light') document.body.classList.add('light-mode');
+    
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const newTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+      });
+    }
+  </script>
 </body>
 </html>
 

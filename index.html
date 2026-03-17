@@ -46,13 +46,13 @@
     .preloader {
       position: fixed;
       inset: 0;
-      background: var(--black);
+      background: var(--bg-primary);
       z-index: 99999;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: var(--white);
+      color: var(--text-primary);
     }
 
     .preloader-logo {
@@ -1774,6 +1774,10 @@
       <li><a href="blog-index.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+      <i class="fas fa-sun"></i>
+      <i class="fas fa-moon"></i>
+    </button>
     <a href="#contact" class="nav-cta magnetic-btn">Get Started</a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
