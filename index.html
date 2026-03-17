@@ -85,11 +85,14 @@
       background: var(--gold);
     }
 
-    .nav-logo {
+    .nav-logo, .footer-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 28px;
       letter-spacing: 3px;
-      color: var(--white);
+      color: var(--text-primary) !important;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
     }
 
     .nav-logo span {
@@ -110,7 +113,7 @@
     }
 
     .nav-links a {
-      color: var(--muted);
+      color: var(--text-muted);
       text-decoration: none;
       font-size: 13px;
       letter-spacing: 2px;
@@ -155,19 +158,28 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(123, 47, 255, 0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(255, 92, 26, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 50% 10%, rgba(255, 212, 94, 0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(123, 47, 255, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(255, 92, 26, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 50% 10%, rgba(255, 212, 94, 0.05) 0%, transparent 60%);
+      transition: opacity 0.3s;
+    }
+
+    body.light-mode .hero-bg {
+      opacity: 0.5;
     }
 
     .hero-grid {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(var(--gold-rgb), 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--gold-rgb), 0.03) 1px, transparent 1px);
       background-size: 80px 80px;
       mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 0%, transparent 80%);
+    }
+    
+    body.light-mode .hero-grid {
+      opacity: 0.4;
     }
 
     /* BLOBS */
@@ -191,11 +203,11 @@
 
     /* GLASSMORPHISM */
     .glass {
-      background: var(--glass);
+      background: var(--glass-bg);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      box-shadow: 0 8px 32px 0 var(--glass-shadow);
     }
 
     .floating-card {
@@ -209,7 +221,7 @@
     }
     .card-icon { font-size: 32px; margin-bottom: 8px; }
     .card-val { font-family: 'Bebas Neue'; font-size: 32px; color: var(--gold); }
-    .card-txt { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+    .card-txt { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
 
     /* ASYMMETRIC GRID */
     .asymmetric-grid {
@@ -224,11 +236,11 @@
     .card-content { position: relative; z-index: 2; }
     .card-tag { display: inline-block; padding: 4px 12px; border: 1px solid var(--gold); border-radius: 20px; font-size: 10px; color: var(--gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
     .card-title { font-family: 'Bebas Neue'; font-size: 44px; line-height: 1; margin-bottom: 15px; }
-    .card-desc { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 400px; }
+    .card-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 400px; }
     .card-stats { display: flex; gap: 30px; margin-top: 30px; }
     .c-stat span { display: block; font-family: 'Bebas Neue'; font-size: 24px; color: var(--gold); }
     
-    .card-bg-icon { position: absolute; right: -30px; bottom: -30px; font-size: 200px; opacity: 0.03; color: var(--white); pointer-events: none; transition: 0.5s; }
+    .card-bg-icon { position: absolute; right: -30px; bottom: -30px; font-size: 200px; opacity: 0.03; color: var(--text-primary); pointer-events: none; transition: 0.5s; }
     .glass:hover .card-bg-icon { transform: scale(1.1) rotate(-10deg); opacity: 0.08; color: var(--gold); }
 
     /* METHODOLOGY FLOW */
@@ -241,9 +253,9 @@
     }
     .method-item { position: relative; display: flex; gap: 40px; align-items: flex-start; }
     .method-line { position: absolute; left: 24px; top: 50px; width: 2px; height: 100px; background: linear-gradient(var(--gold), transparent); }
-    .method-circle { width: 50px; height: 50px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 24px; z-index: 2; background: var(--black); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+    .method-circle { width: 50px; height: 50px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 24px; z-index: 2; background: var(--bg-primary); box-shadow: 0 0 20px rgba(var(--gold-rgb), 0.2); }
     .method-content h3 { font-family: 'Bebas Neue'; font-size: 36px; color: var(--gold); margin-bottom: 10px; }
-    .method-content p { color: var(--muted); max-width: 500px; line-height: 1.6; }
+    .method-content p { color: var(--text-muted); max-width: 500px; line-height: 1.6; }
 
     .method-glow { position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at 10% 30%, rgba(112, 0, 255, 0.1), transparent 50%); pointer-events: none; }
 
@@ -313,7 +325,7 @@
 
     .hero-sub {
       font-size: 17px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.7;
       max-width: 480px;
       margin-top: 28px;
@@ -363,7 +375,7 @@
     }
 
     .btn-ghost {
-      color: var(--white);
+      color: var(--text-primary);
       text-decoration: none;
       font-size: 13px;
       letter-spacing: 2px;
@@ -416,7 +428,7 @@
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted);
       font-family: 'Space Mono', monospace;
     }
 
@@ -432,12 +444,13 @@
       }
     }
 
-    /* MARQUEE */
     .marquee-wrap {
       background: var(--gold);
       padding: 16px 0;
       overflow: hidden;
       position: relative;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
     .marquee-track {
@@ -451,7 +464,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
       letter-spacing: 4px;
-      color: var(--black);
+      color: #000;
       padding: 0 32px;
       white-space: nowrap;
       display: flex;
@@ -574,12 +587,12 @@
       font-size: 32px;
       letter-spacing: 1px;
       margin-bottom: 14px;
-      color: var(--white);
+      color: var(--text-primary);
     }
 
     .service-desc {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
@@ -606,7 +619,7 @@
     /* WHY US */
     .why-section {
       padding: 120px 60px;
-      background: linear-gradient(135deg, #0c0c14 0%, #050507 50%, #0f0a1a 100%);
+      background: var(--bg-primary);
       position: relative;
       overflow: hidden;
     }
@@ -689,12 +702,12 @@
       font-size: 22px;
       letter-spacing: 1px;
       margin-bottom: 6px;
-      color: var(--white);
+      color: var(--text-primary);
     }
 
     .why-point-desc {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
@@ -761,14 +774,13 @@
 
     .step-desc {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
-    /* RESULTS - MODERN UPGRADE */
     .results-section {
       padding: 160px 60px;
-      background: #050510;
+      background: var(--bg-primary);
       position: relative;
       overflow: hidden;
     }
@@ -826,7 +838,7 @@
     .result-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 84px;
-      color: var(--white);
+      color: var(--text-primary);
       line-height: 0.8;
       margin-bottom: 20px;
       transition: all 0.4s;
@@ -839,7 +851,7 @@
 
     .result-label {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -849,14 +861,14 @@
     .result-detail {
         margin-top: 24px;
         padding-top: 24px;
-        border-top: 1px solid rgba(255, 212, 94, 0.1);
+        border-top: 1px solid rgba(var(--gold-rgb), 0.1);
         font-size: 13px;
-        color: var(--muted);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
     .result-detail strong {
-        color: var(--white);
+        color: var(--text-primary);
     }
 
     /* TESTIMONIALS */
@@ -892,7 +904,7 @@
 
     .testi-text {
       font-size: 15px;
-      color: var(--white);
+      color: var(--text-primary);
       line-height: 1.8;
       margin-bottom: 32px;
     }
@@ -925,7 +937,7 @@
 
     .testi-role {
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
@@ -942,7 +954,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--black) 0%, #0d0d1a 100%);
+      background: var(--bg-primary);
     }
 
     .cta-section::before {
@@ -967,7 +979,7 @@
 
     .cta-sub {
       font-size: 16px;
-      color: var(--muted);
+      color: var(--text-muted);
       max-width: 480px;
       margin: 24px auto 48px;
       line-height: 1.7;
@@ -1013,9 +1025,7 @@
     }
 
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      letter-spacing: 3px;
+      color: var(--text-primary) !important;
     }
 
     .footer-logo span {
@@ -1028,7 +1038,7 @@
     }
 
     .footer-links a {
-      color: var(--muted);
+      color: var(--text-muted);
       text-decoration: none;
       font-size: 12px;
       letter-spacing: 2px;
@@ -1043,7 +1053,7 @@
     .footer-copy {
       font-family: 'Space Mono', monospace;
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     /* SCROLL REVEAL */
@@ -1234,7 +1244,7 @@
       right: -100%;
       width: 280px;
       height: 100vh;
-      background: rgba(5, 5, 7, .97);
+      background: var(--bg-primary);
       backdrop-filter: blur(20px);
       z-index: 150;
       padding: 100px 40px 40px;
@@ -1248,7 +1258,7 @@
 
     .mobile-menu a {
       display: block;
-      color: var(--white);
+      color: var(--text-primary);
       text-decoration: none;
       font-size: 18px;
       font-weight: 700;
@@ -1307,7 +1317,7 @@
     .portfolio-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 30%, rgba(5, 5, 7, .95) 100%);
+      background: linear-gradient(180deg, transparent 30%, var(--bg-primary) 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -1326,7 +1336,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 26px;
       letter-spacing: 1px;
-      color: var(--white);
+      color: var(--text-primary);
       margin-bottom: 8px
     }
 
@@ -1346,7 +1356,7 @@
 
     .portfolio-metric {
       font-size: 12px;
-      color: var(--muted)
+      color: var(--text-muted)
     }
 
     .portfolio-metric strong {
@@ -1451,7 +1461,7 @@
 
     .team-bio {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.6
     }
 
@@ -1508,7 +1518,7 @@
     .faq-a-inner {
       padding: 0 32px 24px;
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.8
     }
 
@@ -1537,7 +1547,7 @@
       background: rgba(255, 212, 94, .02);
       border: 1px solid rgba(255, 212, 94, .08);
       border-radius: 12px; /* Curves for inputs */
-      color: var(--white);
+      color: var(--text-primary);
       padding: 16px 20px;
       font-family: 'Syne', sans-serif;
       font-size: 14px;
@@ -1554,7 +1564,7 @@
 
     .contact-form input::placeholder,
     .contact-form textarea::placeholder {
-      color: var(--muted)
+      color: var(--text-muted)
     }
 
     .contact-form textarea {
@@ -1568,8 +1578,8 @@
     }
 
     .contact-form select option {
-      background: var(--black);
-      color: var(--white)
+      background: var(--bg-primary);
+      color: var(--text-primary)
     }
 
     .form-btn {
@@ -1959,7 +1969,7 @@
         </div>
       </div>
     </div>
-    <div style="margin-top:60px; text-align:center; font-size:11px; color:var(--muted); font-family:'Space Mono', monospace; opacity:0.5;">
+    <div style="margin-top:60px; text-align:center; font-size:11px; color:var(--text-muted); font-family:'Space Mono', monospace; opacity:0.5;">
       VERIFIED VIA GOOGLE ADS & META BUSINESS SUITE · 2025 DATA HUD
     </div>
   </section>
@@ -2016,7 +2026,7 @@
         <div class="portfolio-overlay">
           <div class="portfolio-cat">Healthcare · Dental Clinic</div>
           <div class="portfolio-name">MediCare Plus</div>
-          <div style="font-size:11px; margin: 10px 0; color:var(--white); opacity:0.8;">
+          <div style="font-size:11px; margin: 10px 0; color:var(--text-primary); opacity:0.8;">
             <strong>Problem:</strong> High cost per lead in a crowded local market.<br>
             <strong>Strategy:</strong> Local SEO + Google Ads with landing page optimization.<br>
             <strong>Results:</strong> 3x Leads, 60% Lower CPL.
@@ -2033,7 +2043,7 @@
         <div class="portfolio-overlay">
           <div class="portfolio-cat">Real Estate · High Ticket</div>
           <div class="portfolio-name">Skyline Residency</div>
-          <div style="font-size:11px; margin: 10px 0; color:var(--white); opacity:0.8;">
+          <div style="font-size:11px; margin: 10px 0; color:var(--text-primary); opacity:0.8;">
             <strong>Problem:</strong> Cold leads not qualifying for site visits.<br>
             <strong>Strategy:</strong> Multi-step FB lead form + WhatsApp automation.<br>
             <strong>Results:</strong> 85 Qualified Leads in 45 days.
@@ -2050,7 +2060,7 @@
         <div class="portfolio-overlay">
           <div class="portfolio-cat">Fashion · D2C Scale</div>
           <div class="portfolio-name">StyleHive</div>
-          <div style="font-size:11px; margin: 10px 0; color:var(--white); opacity:0.8;">
+          <div style="font-size:11px; margin: 10px 0; color:var(--text-primary); opacity:0.8;">
             <strong>Problem:</strong> Stagnant revenue with existing agency.<br>
             <strong>Strategy:</strong> Conversion-focused Meta Ads + Email Retention.<br>
             <strong>Results:</strong> 420% ROI Growth in 3 months.
@@ -2071,19 +2081,19 @@
       <div>
         <div class="section-label">Revenue Engine</div>
         <h2 class="section-title reveal">LEAD ROI<br><span style="color:var(--gold)">PREDICTOR</span></h2>
-        <p style="color:var(--muted); margin-bottom:40px; font-size:15px; max-width:400px;">See how much revenue your clinic is leaving on the table. Move the sliders to predict your growth.</p>
+        <p style="color:var(--text-muted); margin-bottom:40px; font-size:15px; max-width:400px;">See how much revenue your clinic is leaving on the table. Move the sliders to predict your growth.</p>
         
         <div style="display:flex; flex-direction:column; gap:30px;">
           <div>
             <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-              <span style="font-size:12px; letter-spacing:1px; color:var(--white);">MONTHLY AD SPEND</span>
+              <span style="font-size:12px; letter-spacing:1px; color:var(--text-primary);">MONTHLY AD SPEND</span>
               <span id="spendVal" style="color:var(--gold); font-weight:800;">₹50,000</span>
             </div>
             <input type="range" id="spendRange" min="10000" max="500000" step="5000" value="50000" oninput="updateROI()">
           </div>
           <div>
             <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-              <span style="font-size:12px; letter-spacing:1px; color:var(--white);">AVG. TREATMENT VALUE</span>
+              <span style="font-size:12px; letter-spacing:1px; color:var(--text-primary);">AVG. TREATMENT VALUE</span>
               <span id="ticketVal" style="color:var(--gold); font-weight:800;">₹15,000</span>
             </div>
             <input type="range" id="ticketRange" min="5000" max="100000" step="1000" value="15000" oninput="updateROI()">
@@ -2093,11 +2103,11 @@
 
       <div class="calc-card reveal">
         <div style="margin-bottom:30px;">
-          <div style="font-size:11px; color:var(--muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED NEW REVENUE</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED NEW REVENUE</div>
           <div id="estRev" class="calc-val">₹4,50,000</div>
         </div>
         <div style="margin-bottom:30px;">
-          <div style="font-size:11px; color:var(--muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED LEADS / MO</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED LEADS / MO</div>
           <div id="estLeads" class="calc-val">45</div>
         </div>
         <a href="#contact" class="btn-primary" style="width:100%; text-align:center;">Claim This Growth →</a>
@@ -2218,7 +2228,7 @@
       </form>
     </div>
     <p
-      style="margin-top:32px; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); position:relative; z-index:2; letter-spacing:2px;">
+      style="margin-top:32px; font-family:'Space Mono',monospace; font-size:11px; color:var(--text-muted); position:relative; z-index:2; letter-spacing:2px;">
       NO COMMITMENT · NO BULLSHIT · JUST RESULTS</p>
   </section>
 
@@ -2227,7 +2237,7 @@
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:40px; width:100%; border-bottom: 1px solid rgba(255, 212, 94, 0.08); padding-bottom:60px; margin-bottom:40px;">
       <div>
         <div class="footer-logo"><img src="assets/logo.png" alt="BL Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
-        <div style="margin-top:20px; font-size:12px; color:var(--muted); line-height:1.6; font-family:'Space Mono', monospace;">
+        <div style="margin-top:20px; font-size:12px; color:var(--text-muted); line-height:1.6; font-family:'Space Mono', monospace;">
           <strong>Metrix Mind HQ</strong><br>
           NH 10, West Cabin Block, Mundka,<br>
           New Delhi, Delhi, 110041<br>
@@ -2236,7 +2246,7 @@
         </div>
       </div>
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px; color:var(--white);">Solutions</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px; color:var(--text-primary);">Solutions</div>
         <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:12px;">
           <a href="about.html">Our Story</a>
           <a href="/case-studies">Success Stories</a>
@@ -2245,7 +2255,7 @@
         </div>
       </div>
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px; color:var(--white);">Legal</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px; color:var(--text-primary);">Legal</div>
         <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:12px;">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>

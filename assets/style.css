@@ -1,29 +1,45 @@
 :root {
   /* Dark Mode (Default) */
   --bg-primary: #050508;
+  --bg-primary-rgb: 5, 5, 8;
   --bg-secondary: #0a0a0f;
+  --bg-secondary-rgb: 10, 10, 15;
   --text-primary: #f8f8f8;
+  --text-primary-rgb: 248, 248, 248;
   --text-muted: #888899;
+  --text-muted-rgb: 136, 136, 153;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 215, 0, 0.1);
-  --nav-bg: rgba(5, 5, 8, 0.8);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  --nav-bg: rgba(5, 5, 8, 0.85);
+  --selection-bg: var(--gold);
+  --selection-text: #000;
   
   /* Brand Colors */
   --gold: #FFD700;
+  --gold-rgb: 255, 215, 0;
   --orange: #FF4D00;
   --purple: #7000FF;
   --black: #050508;
   --white: #f8f8f8;
+  --gray-dark: #121215;
 }
 
 body.light-mode {
-  --bg-primary: #f8f8fa;
-  --bg-secondary: #ffffff;
-  --text-primary: #1a1a1c;
-  --text-muted: #666677;
+  --bg-primary: #ffffff;
+  --bg-primary-rgb: 255, 255, 255;
+  --bg-secondary: #f0f0f5;
+  --bg-secondary-rgb: 240, 240, 245;
+  --text-primary: #050508;
+  --text-primary-rgb: 5, 5, 8;
+  --text-muted: #444455;
+  --text-muted-rgb: 68, 68, 85;
   --glass-bg: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(255, 215, 0, 0.2);
-  --nav-bg: rgba(248, 248, 250, 0.8);
+  --glass-border: rgba(255, 215, 0, 0.25);
+  --glass-shadow: rgba(0, 0, 0, 0.08);
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --selection-bg: #000000;
+  --selection-text: #ffffff;
 }
 
 *,
@@ -98,7 +114,7 @@ nav {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   letter-spacing: 3px;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -227,9 +243,9 @@ footer {
 
 /* THEME TOGGLE */
 .theme-toggle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   color: var(--text-primary);
@@ -237,14 +253,16 @@ footer {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-left: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .theme-toggle:hover {
   border-color: var(--gold);
-  color: var(--gold);
-  transform: rotate(15deg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--glass-shadow);
 }
 
 .theme-toggle i {
