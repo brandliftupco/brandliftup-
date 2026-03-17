@@ -4,83 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Metrix Mind — AI Digital Marketing Agency | Grow Your Brand 10x</title>
+  <title>Metrix Mind — Predictable Lead Gen for Clinics & Local Service Businesses</title>
   <meta name="description"
-    content="Metrix Mind is India's leading AI-powered digital marketing agency. We deliver 340% avg ROI with data-driven SEO, paid ads, social media & lead generation. Book a free strategy call today.">
+    content="Metrix Mind helps local service brands and clinics generate qualified leads through Google Ads, SEO, and funnels. Results in 30 days or we work for free.">
   <meta name="keywords"
-    content="digital marketing agency, AI marketing, SEO services India, paid ads, social media marketing, lead generation, brand identity">
-  <meta property="og:title" content="Metrix Mind — AI Digital Marketing Agency">
+    content="clinic marketing, local lead generation, google ads for clinics, dental seo, real estate marketing, local seo india">
+  <meta property="og:title" content="Metrix Mind — Lead Gen for Clinics & Local Brands">
   <meta property="og:description"
-    content="We don't run ads. We print money. AI-powered marketing that delivers real results.">
+    content="Predictable Lead Generation for Clinics and Local Service Businesses. Results in 30 days or we work for free.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://brandliftup.in">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/style.css">
+  
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
   <style>
-    :root {
-      --black: #050507;
-      --white: #f0eee8;
-      --gold: #FFD45E;
-      --orange: #FF5C1A;
-      --purple: #7B2FFF;
-      --dim: #1a1a24;
-      --muted: #6b6b7a;
-    }
-
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Syne', sans-serif;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* CUSTOM CURSOR */
-    .cursor {
-      width: 12px;
-      height: 12px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s ease;
-      mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-      width: 40px;
-      height: 40px;
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform 0.15s ease, width 0.2s, height 0.2s;
-      mix-blend-mode: difference;
-    }
-
+    /* Page Specific Styles */
     /* NOISE OVERLAY */
     body::before {
       content: '';
@@ -92,20 +43,47 @@
       opacity: 0.35;
     }
 
-    /* NAV */
-    nav {
+    /* PRELOADER */
+    .preloader {
       position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .preloader-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      letter-spacing: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .preloader-text {
+      display: inline-block;
+      transform: translateY(100%);
+    }
+
+    .preloader-bar-wrap {
+      width: 200px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preloader-bar {
+      position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      padding: 24px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(5, 5, 7, 0.7);
-      border-bottom: 1px solid rgba(255, 212, 94, 0.08);
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
     }
 
     .nav-logo {
@@ -187,11 +165,88 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 212, 94, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 212, 94, 0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 0%, transparent 70%);
+        linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 0%, transparent 80%);
     }
+
+    /* BLOBS */
+    .hero-blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 1;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .glow-purple { background: var(--purple); top: -10%; left: -10%; animation: floatBlob 20s infinite alternate; }
+    .glow-orange { background: var(--orange); bottom: -10%; right: -10%; animation: floatBlob 15s infinite alternate-reverse; }
+
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 50px) scale(1.1); }
+    }
+
+    /* GLASSMORPHISM */
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .floating-card {
+      position: absolute;
+      padding: 24px;
+      border-radius: 20px;
+      z-index: 5;
+      width: 180px;
+      text-align: center;
+      box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+    }
+    .card-icon { font-size: 32px; margin-bottom: 8px; }
+    .card-val { font-family: 'Bebas Neue'; font-size: 32px; color: var(--gold); }
+    .card-txt { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+
+    /* ASYMMETRIC GRID */
+    .asymmetric-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+      margin-top: 60px;
+    }
+    .big-card { grid-column: span 7; position: relative; padding: 60px; border-radius: 30px; overflow: hidden; min-height: 400px; display: flex; align-items: flex-end; }
+    .small-card { grid-column: span 5; position: relative; padding: 40px; border-radius: 30px; overflow: hidden; min-height: 350px; }
+    
+    .card-content { position: relative; z-index: 2; }
+    .card-tag { display: inline-block; padding: 4px 12px; border: 1px solid var(--gold); border-radius: 20px; font-size: 10px; color: var(--gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .card-title { font-family: 'Bebas Neue'; font-size: 44px; line-height: 1; margin-bottom: 15px; }
+    .card-desc { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 400px; }
+    .card-stats { display: flex; gap: 30px; margin-top: 30px; }
+    .c-stat span { display: block; font-family: 'Bebas Neue'; font-size: 24px; color: var(--gold); }
+    
+    .card-bg-icon { position: absolute; right: -30px; bottom: -30px; font-size: 200px; opacity: 0.03; color: var(--white); pointer-events: none; transition: 0.5s; }
+    .glass:hover .card-bg-icon { transform: scale(1.1) rotate(-10deg); opacity: 0.08; color: var(--gold); }
+
+    /* METHODOLOGY FLOW */
+    .method-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+      margin-top: 80px;
+      padding-left: 50px;
+    }
+    .method-item { position: relative; display: flex; gap: 40px; align-items: flex-start; }
+    .method-line { position: absolute; left: 24px; top: 50px; width: 2px; height: 100px; background: linear-gradient(var(--gold), transparent); }
+    .method-circle { width: 50px; height: 50px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 24px; z-index: 2; background: var(--black); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+    .method-content h3 { font-family: 'Bebas Neue'; font-size: 36px; color: var(--gold); margin-bottom: 10px; }
+    .method-content p { color: var(--muted); max-width: 500px; line-height: 1.6; }
+
+    .method-glow { position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at 10% 30%, rgba(112, 0, 255, 0.1), transparent 50%); pointer-events: none; }
 
     .hero-content {
       position: relative;
@@ -283,10 +338,11 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      border-radius: 50px; /* Replaced clip-path for premium curve */
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255, 212, 94, 0.2);
     }
 
     .btn-primary::after {
@@ -455,16 +511,18 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 24px; /* Changed from 2px */
       margin-top: 60px;
     }
 
     .service-card {
-      background: var(--dim);
+      background: rgba(255, 212, 94, 0.03); /* Softer premium background */
+      border: 1px solid rgba(255, 212, 94, 0.05); /* Soft border */
+      border-radius: 24px; /* Curved edges */
       padding: 48px 40px;
       position: relative;
       overflow: hidden;
-      transition: background 0.4s;
+      transition: background 0.4s, transform 0.4s, border-color 0.4s;
       cursor: none;
     }
 
@@ -486,7 +544,9 @@
     }
 
     .service-card:hover {
-      background: #1e1e2d;
+      background: rgba(255, 212, 94, 0.06);
+      border-color: rgba(255, 212, 94, 0.15);
+      transform: translateY(-5px); /* Soft float effect */
     }
 
     .service-num {
@@ -601,13 +661,15 @@
       align-items: flex-start;
       padding: 28px;
       background: rgba(255, 212, 94, 0.03);
-      border: 1px solid rgba(255, 212, 94, 0.08);
-      transition: border-color 0.3s, background 0.3s;
+      border: 1px solid rgba(255, 212, 94, 0.05);
+      border-radius: 24px; /* Curved edges */
+      transition: border-color 0.4s, background 0.4s, transform 0.4s;
     }
 
     .why-point:hover {
-      border-color: rgba(255, 212, 94, 0.25);
+      border-color: rgba(255, 212, 94, 0.2);
       background: rgba(255, 212, 94, 0.06);
+      transform: translateX(10px);
     }
 
     .why-icon {
@@ -619,6 +681,7 @@
       justify-content: center;
       font-size: 20px;
       flex-shrink: 0;
+      border-radius: 50%; /* Fully round icon box */
       border: 1px solid rgba(255, 212, 94, 0.2);
     }
 
@@ -644,15 +707,24 @@
     .process-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
+      gap: 24px; /* Increased gap */
       margin-top: 60px;
     }
 
     .process-step {
       padding: 48px 32px;
-      background: var(--dim);
+      background: rgba(255, 212, 94, 0.03); /* Soft BG */
+      border: 1px solid rgba(255, 212, 94, 0.05); /* Soft border */
+      border-radius: 24px; /* Curves */
       position: relative;
       overflow: hidden;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+
+    .process-step:hover {
+      background: rgba(255, 212, 94, 0.06);
+      border-color: rgba(255, 212, 94, 0.15);
+      transform: translateY(-5px);
     }
 
     .process-step::after {
@@ -694,58 +766,98 @@
       line-height: 1.7;
     }
 
-    /* RESULTS */
+    /* RESULTS - MODERN UPGRADE */
     .results-section {
-      padding: 120px 60px;
-      background: var(--gold);
+      padding: 160px 60px;
+      background: #050510;
       position: relative;
       overflow: hidden;
     }
 
-    .results-section .section-label {
-      color: var(--black);
-    }
-
-    .results-section .section-label::before {
-      background: var(--black);
-    }
-
-    .results-section .section-title {
-      color: var(--black);
+    .results-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at center, rgba(112, 0, 255, 0.08) 0%, transparent 60%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
 
     .results-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      margin-top: 60px;
+      gap: 32px;
+      margin-top: 80px;
     }
 
     .result-card {
-      background: rgba(0, 0, 0, 0.08);
-      padding: 48px 32px;
-      transition: background 0.3s;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 212, 94, 0.08);
+      border-radius: 32px;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .result-card:hover {
-      background: rgba(0, 0, 0, 0.15);
+      background: rgba(255, 212, 94, 0.04);
+      border-color: rgba(255, 212, 94, 0.3);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .result-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255, 212, 94, 0.05), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.8s;
+    }
+
+    .result-card:hover::after {
+      transform: translateX(100%);
     }
 
     .result-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 72px;
-      color: var(--black);
-      line-height: 1;
+      font-size: 84px;
+      color: var(--white);
+      line-height: 0.8;
+      margin-bottom: 20px;
+      transition: all 0.4s;
+    }
+
+    .result-card:hover .result-num {
+      color: var(--gold);
+      transform: scale(1.1);
     }
 
     .result-label {
-      font-size: 13px;
-      color: rgba(0, 0, 0, 0.6);
+      font-size: 11px;
+      color: var(--muted);
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       font-family: 'Space Mono', monospace;
-      margin-top: 8px;
+    }
+
+    .result-detail {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 212, 94, 0.1);
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+    }
+
+    .result-detail strong {
+        color: var(--white);
     }
 
     /* TESTIMONIALS */
@@ -756,12 +868,14 @@
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 24px; /* Increased gap */
       margin-top: 60px;
     }
 
     .testi-card {
-      background: var(--dim);
+      background: rgba(255, 212, 94, 0.03); /* Soft BG */
+      border: 1px solid rgba(255, 212, 94, 0.05); /* Soft border */
+      border-radius: 24px; /* Curves */
       padding: 48px 40px;
       position: relative;
     }
@@ -879,13 +993,15 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       text-decoration: none;
-      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+      border-radius: 50px; /* Pill shape */
       transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(255, 212, 94, 0.2);
     }
 
     .btn-big:hover {
       background: var(--orange);
       transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(255, 92, 26, 0.3);
     }
 
     /* FOOTER */
@@ -934,12 +1050,14 @@
     /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
+      visibility: hidden;
       transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
     }
 
     .reveal.visible {
       opacity: 1;
+      visibility: visible;
       transform: translateY(0);
     }
 
@@ -1165,15 +1283,17 @@
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 24px; /* Increased gap */
       margin-top: 60px
     }
 
     .portfolio-card {
       background: var(--dim);
+      border-radius: 24px; /* Curve */
       position: relative;
       overflow: hidden;
-      cursor: none
+      cursor: none;
+      transform: translateZ(0); /* Fix for border-radius overflow issues in some browsers */
     }
 
     .portfolio-img {
@@ -1238,138 +1358,67 @@
       line-height: 1
     }
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 60px
+    /* ROI CALCULATOR STYLES */
+    #calculator {
+      background: rgba(255, 215, 0, 0.02);
+      border-color: rgba(255, 215, 0, 0.1);
     }
-
-    .pricing-card {
-      background: var(--dim);
-      padding: 48px 36px;
-      position: relative;
-      overflow: hidden;
-      transition: background .3s;
-      display: flex;
-      flex-direction: column
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: rgba(255, 212, 94, 0.1);
+      border-radius: 5px;
+      outline: none;
+      margin: 15px 0;
+      width: 100%;
     }
-
-    .pricing-card.featured {
-      background: #1e1e2d;
-      border: 1px solid rgba(255, 212, 94, .2)
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: 20px;
-      right: -32px;
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
       background: var(--gold);
-      color: var(--black);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 40px;
-      transform: rotate(45deg)
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 212, 94, 0.4);
+      transition: transform 0.2s;
     }
-
-    .pricing-name {
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+    .calc-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 212, 94, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+    }
+    .calc-val {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 2px;
-      color: var(--white);
-      margin-bottom: 8px
-    }
-
-    .pricing-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 24px
-    }
-
-    .pricing-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 56px;
+      font-size: 48px;
       color: var(--gold);
       line-height: 1;
-      margin-bottom: 4px
-    }
-
-    .pricing-price small {
-      font-size: 16px;
-      color: var(--muted);
-      font-family: 'Space Mono', monospace
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin: 24px 0;
-      flex-grow: 1
-    }
-
-    .pricing-features li {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 212, 94, .06);
-      font-size: 14px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .pricing-features li::before {
-      content: '\2713';
-      color: var(--gold);
-      font-weight: 800
-    }
-
-    .pricing-cta {
-      display: block;
-      text-align: center;
-      background: transparent;
-      border: 1px solid rgba(255, 212, 94, .3);
-      color: var(--gold);
-      padding: 14px;
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all .3s;
-      margin-top: auto
-    }
-
-    .pricing-cta:hover {
-      background: var(--gold);
-      color: var(--black)
-    }
-
-    .pricing-card.featured .pricing-cta {
-      background: var(--gold);
-      color: var(--black)
-    }
-
-    .pricing-card.featured .pricing-cta:hover {
-      background: var(--orange)
     }
 
     .team-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
+      gap: 24px; /* Increased gap */
       margin-top: 60px
     }
 
     .team-card {
-      background: var(--dim);
+      background: rgba(255, 212, 94, 0.03); /* Soft BG */
+      border: 1px solid rgba(255, 212, 94, 0.05); /* Soft border */
+      border-radius: 24px; /* Curves */
       padding: 40px 32px;
       text-align: center;
-      transition: background .3s
+      transition: background 0.4s, border-color 0.4s, transform 0.4s;
     }
 
     .team-card:hover {
-      background: #1e1e2d
+      background: rgba(255, 212, 94, 0.06);
+      border-color: rgba(255, 212, 94, 0.15);
+      transform: translateY(-5px);
     }
 
     .team-avatar {
@@ -1412,12 +1461,20 @@
       margin: 60px auto 0;
       display: flex;
       flex-direction: column;
-      gap: 2px
+      gap: 16px; /* Spaced out items instead of stacked box */
     }
 
     .faq-item {
-      background: var(--dim);
-      overflow: hidden
+      background: rgba(255, 212, 94, 0.02);
+      border: 1px solid rgba(255, 212, 94, 0.05);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .faq-item:hover {
+       background: rgba(255, 212, 94, 0.04);
+       border-color: rgba(255, 212, 94, 0.1);
     }
 
     .faq-q {
@@ -1429,12 +1486,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background .3s;
       user-select: none
-    }
-
-    .faq-q:hover {
-      background: #1e1e2d
     }
 
     .faq-q::after {
@@ -1483,20 +1535,22 @@
     .contact-form textarea,
     .contact-form select {
       width: 100%;
-      background: rgba(255, 212, 94, .04);
-      border: 1px solid rgba(255, 212, 94, .12);
+      background: rgba(255, 212, 94, .02);
+      border: 1px solid rgba(255, 212, 94, .08);
+      border-radius: 12px; /* Curves for inputs */
       color: var(--white);
       padding: 16px 20px;
       font-family: 'Syne', sans-serif;
       font-size: 14px;
       outline: none;
-      transition: border-color .3s
+      transition: border-color .3s, background 0.3s;
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus,
     .contact-form select:focus {
-      border-color: var(--gold)
+      border-color: var(--gold);
+      background: rgba(255, 212, 94, .05);
     }
 
     .contact-form input::placeholder,
@@ -1529,14 +1583,16 @@
       text-transform: uppercase;
       border: none;
       cursor: pointer;
-      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      border-radius: 50px; /* Pill shape */
       transition: all .3s;
-      font-family: 'Syne', sans-serif
+      font-family: 'Syne', sans-serif;
+      box-shadow: 0 4px 15px rgba(255, 212, 94, 0.2);
     }
 
     .form-btn:hover {
       background: var(--orange);
-      transform: translateY(-2px)
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 92, 26, 0.3);
     }
 
     .form-status {
@@ -1614,41 +1670,12 @@
       color: var(--black)
     }
 
-    .footer-social {
-      display: flex;
-      gap: 16px
-    }
-
-    .footer-social a {
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 212, 94, .15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      text-decoration: none;
-      transition: all .3s;
-      font-size: 16px
-    }
-
-    .footer-social a:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: rgba(255, 212, 94, .08)
-    }
-
-    .portfolio-grid,
-    .pricing-grid {
+    .portfolio-grid {
       grid-template-columns: 1fr 1fr
     }
 
     .team-grid {
       grid-template-columns: 1fr 1fr
-    }
-
-    .footer-social {
-      justify-content: center
     }
 
     .contact-form {
@@ -1674,873 +1701,66 @@
     .nav-logo,
     .footer-logo {
       display: flex;
-      align-items: center
     }
 
-    /* ========== FULL RESPONSIVE OVERHAUL ========== */
-
-    /* LARGE TABLETS (1024px) */
-    @media(max-width:1024px) {
-      nav {
-        padding: 16px 24px
-      }
-
-      .nav-links {
-        display: flex;
-      }
-
-      /* ========== FULL RESPONSIVE OVERHAUL ========== */
-
-      /* LARGE TABLETS (1024px) */
-      @media(max-width:1024px) {
-        nav {
-          padding: 16px 24px
-        }
-
-        .nav-links {
-          display: flex;
-        }
-
-        .hamburger {
-          display: flex
-        }
-
-        .nav-logo-img {
-          height: 42px
-        }
-
-        .hero {
-          padding: 100px 30px 60px;
-          min-height: auto
-        }
-
-        .hero-title {
-          font-size: clamp(52px, 10vw, 100px)
-        }
-
-        .hero-sub {
-          font-size: 15px;
-          max-width: 100%
-        }
-
-        .hero-stats {
-          right: 30px;
-          bottom: 40px
-        }
-
-        .stat-num {
-          font-size: 36px
-        }
-
-        .section,
-        .why-section,
-        .process-section,
-        .results-section,
-        .testimonials,
-        .cta-section {
-          padding: 80px 24px
-        }
-
-        .section-title {
-          font-size: clamp(40px, 6vw, 72px)
-        }
-
-        .services-grid,
-        .process-steps,
-        .portfolio-grid {
-          grid-template-columns: 1fr 1fr
-        }
-
-        .results-grid,
-        .pricing-grid {
-          grid-template-columns: 1fr 1fr
-        }
-
-        .testi-grid {
-          grid-template-columns: 1fr
-        }
-
-        .why-grid {
-          grid-template-columns: 1fr;
-          gap: 40px
-        }
-
-        .team-grid {
-          grid-template-columns: 1fr 1fr
-        }
-
-        .faq-list {
-          max-width: 100%
-        }
-
-        .contact-form {
-          max-width: 100%
-        }
-
-        footer {
-          padding: 40px 24px;
-          flex-direction: column;
-          gap: 20px;
-          text-align: center
-        }
-
-        .footer-links {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 16px
-        }
-
-        .footer-social {
-          justify-content: center
-        }
-
-        .cta-title {
-          font-size: clamp(48px, 8vw, 100px)
-        }
-      }
-
-      /* SMALL TABLETS (768px) */
-      @media(max-width:768px) {
-        nav {
-          padding: 14px 20px
-        }
-
-        .nav-cta {
-          padding: 8px 18px;
-          font-size: 10px
-        }
-
-        .nav-logo {
-          font-size: 22px
-        }
-
-        .nav-logo-img {
-          height: 38px
-        }
-
-        .hero {
-          padding: 90px 20px 50px
-        }
-
-        .hero-tag {
-          font-size: 10px;
-          letter-spacing: 2px;
-          padding: 6px 12px;
-          margin-bottom: 24px
-        }
-
-        .hero-title {
-          font-size: clamp(44px, 9vw, 80px)
-        }
-
-        .hero-sub {
-          font-size: 14px;
-          margin-top: 20px
-        }
-
-        .hero-actions {
-          margin-top: 32px;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px
-        }
-
-        .btn-primary {
-          padding: 14px 28px;
-          font-size: 12px
-        }
-
-        .hero-stats {
-          position: relative;
-          right: auto;
-          bottom: auto;
-          flex-direction: row;
-          gap: 24px;
-          margin-top: 40px
-        }
-
-        .stat-num {
-          font-size: 32px
-        }
-
-        .stat-label {
-          font-size: 10px
-        }
-
-        .marquee-item {
-          font-size: 16px;
-          padding: 0 20px
-        }
-
-        .section,
-        .why-section,
-        .process-section,
-        .results-section,
-        .testimonials,
-        .cta-section {
-          padding: 60px 20px
-        }
-
-        .section-title {
-          font-size: clamp(36px, 5vw, 60px)
-        }
-
-        .section-label {
-          font-size: 10px;
-          letter-spacing: 3px
-        }
-
-        .services-grid,
-        .process-steps,
-        .results-grid,
-        .portfolio-grid,
-        .pricing-grid {
-          grid-template-columns: 1fr 1fr
-        }
-
-        .service-card {
-          padding: 36px 28px
-        }
-
-        .service-name {
-          font-size: 26px
-        }
-
-        .service-num {
-          font-size: 56px
-        }
-
-        .process-step {
-          padding: 36px 24px
-        }
-
-        .step-title {
-          font-size: 24px
-        }
-
-        .step-num {
-          font-size: 60px
-        }
-
-        .result-card {
-          padding: 36px 24px
-        }
-
-        .result-num {
-          font-size: 56px
-        }
-
-        .testi-card {
-          padding: 36px 28px
-        }
-
-        .testi-text {
-          font-size: 14px
-        }
-
-        .portfolio-img {
-          height: 220px
-        }
-
-        .pricing-card {
-          padding: 36px 28px
-        }
-
-        .pricing-price {
-          font-size: 44px
-        }
-
-        .team-grid {
-          grid-template-columns: 1fr 1fr
-        }
-
-        .team-card {
-          padding: 32px 24px
-        }
-
-        .faq-q {
-          font-size: 18px;
-          padding: 20px 24px
-        }
-
-        .faq-a-inner {
-          padding: 0 24px 20px;
-          font-size: 13px
-        }
-
-        .cta-title {
-          font-size: clamp(40px, 7vw, 80px)
-        }
-
-        .cta-sub {
-          font-size: 14px
-        }
-
-        .contact-form {
-          grid-template-columns: 1fr 1fr;
-          gap: 12px
-        }
-
-        .form-btn {
-          padding: 16px 32px;
-          font-size: 12px
-        }
-
-        .big-text {
-          font-size: clamp(80px, 12vw, 140px)
-        }
-
-        .why-point {
-          padding: 20px
-        }
-
-        .why-icon {
-          width: 40px;
-          height: 40px;
-          font-size: 18px
-        }
-
-        .why-point-title {
-          font-size: 18px
-        }
-
-        .why-point-desc {
-          font-size: 12px
-        }
-
-        .whatsapp-btn {
-          width: 52px;
-          height: 52px;
-          font-size: 24px;
-          bottom: 20px;
-          right: 20px
-        }
-
-        .back-top {
-          width: 38px;
-          height: 38px;
-          font-size: 16px;
-          bottom: 84px;
-          right: 20px
-        }
-
-        .footer-logo {
-          font-size: 20px;
-          justify-content: center
-        }
-
-        .footer-logo-img {
-          height: 32px
-        }
-
-        .footer-copy {
-          font-size: 10px
-        }
-      }
-
-      /* MOBILE PHONES (480px and below) */
-      @media(max-width:480px) {
-        nav {
-          padding: 12px 16px
-        }
-
-        .nav-logo {
-          font-size: 18px;
-          letter-spacing: 2px
-        }
-
-        .nav-logo-img {
-          height: 32px;
-          margin-right: 6px
-        }
-
-        .nav-cta {
-          padding: 8px 14px;
-          font-size: 9px;
-          letter-spacing: 1px
-        }
-
-        .hero {
-          padding: 80px 16px 40px
-        }
-
-        .hero-tag {
-          font-size: 9px;
-          letter-spacing: 2px;
-          padding: 6px 10px;
-          margin-bottom: 20px
-        }
-
-        .hero-title {
-          font-size: clamp(36px, 11vw, 56px)
-        }
-
-        .hero-sub {
-          font-size: 13px;
-          margin-top: 16px;
-          line-height: 1.6
-        }
-
-        .hero-actions {
-          margin-top: 24px
-        }
-
-        .btn-primary {
-          padding: 12px 24px;
-          font-size: 11px;
-          letter-spacing: 1px;
-          width: 100%;
-          text-align: center
-        }
-
-        .btn-ghost {
-          font-size: 11px
-        }
-
-        .hero-stats {
-          flex-direction: row;
-          gap: 20px;
-          margin-top: 32px
-        }
-
-        .stat-num {
-          font-size: 28px
-        }
-
-        .stat-label {
-          font-size: 9px;
-          letter-spacing: 1px
-        }
-
-        .marquee-item {
-          font-size: 14px;
-          padding: 0 16px;
-          letter-spacing: 2px
-        }
-
-        .section,
-        .why-section,
-        .process-section,
-        .results-section,
-        .testimonials,
-        .cta-section {
-          padding: 48px 16px
-        }
-
-        .section-title {
-          font-size: clamp(32px, 8vw, 48px)
-        }
-
-        .section-label {
-          font-size: 9px;
-          letter-spacing: 2px;
-          margin-bottom: 12px
-        }
-
-        .section-label::before {
-          width: 24px
-        }
-
-        .services-grid,
-        .process-steps,
-        .results-grid,
-        .portfolio-grid,
-        .pricing-grid,
-        .team-grid {
-          grid-template-columns: 1fr;
-          gap: 2px
-        }
-
-        .service-card {
-          padding: 32px 24px
-        }
-
-        .service-name {
-          font-size: 24px
-        }
-
-        .service-desc {
-          font-size: 13px
-        }
-
-        .service-num {
-          font-size: 48px;
-          top: 16px;
-          right: 20px
-        }
-
-        .service-icon {
-          font-size: 28px;
-          margin-bottom: 16px
-        }
-
-        .process-step {
-          padding: 32px 20px
-        }
-
-        .step-title {
-          font-size: 22px
-        }
-
-        .step-desc {
-          font-size: 12px
-        }
-
-        .step-num {
-          font-size: 48px
-        }
-
-        .result-card {
-          padding: 28px 20px
-        }
-
-        .result-num {
-          font-size: 48px
-        }
-
-        .result-label {
-          font-size: 11px
-        }
-
-        .testi-card {
-          padding: 28px 24px
-        }
-
-        .testi-text {
-          font-size: 13px;
-          line-height: 1.7;
-          margin-bottom: 24px
-        }
-
-        .testi-avatar {
-          width: 36px;
-          height: 36px;
-          font-size: 14px
-        }
-
-        .testi-name {
-          font-size: 13px
-        }
-
-        .testi-role {
-          font-size: 11px
-        }
-
-        .stars {
-          font-size: 12px;
-          margin-bottom: 14px
-        }
-
-        .portfolio-img {
-          height: 180px;
-          font-size: 36px
-        }
-
-        .portfolio-overlay {
-          padding: 20px
-        }
-
-        .portfolio-name {
-          font-size: 22px
-        }
-
-        .portfolio-metric strong {
-          font-size: 24px
-        }
-
-        .pricing-card {
-          padding: 32px 24px
-        }
-
-        .pricing-name {
-          font-size: 28px
-        }
-
-        .pricing-price {
-          font-size: 40px
-        }
-
-        .pricing-features li {
-          font-size: 13px;
-          padding: 8px 0
-        }
-
-        .pricing-cta {
-          padding: 12px;
-          font-size: 11px
-        }
-
-        .pricing-badge {
-          font-size: 9px;
-          padding: 4px 36px;
-          top: 16px;
-          right: -36px
-        }
-
-        .team-card {
-          padding: 28px 20px
-        }
-
-        .team-avatar {
-          width: 64px;
-          height: 64px;
-          font-size: 24px
-        }
-
-        .team-name {
-          font-size: 20px
-        }
-
-        .team-bio {
-          font-size: 12px
-        }
-
-        .faq-q {
-          font-size: 16px;
-          padding: 18px 20px
-        }
-
-        .faq-q::after {
-          font-size: 24px
-        }
-
-        .faq-a-inner {
-          padding: 0 20px 16px;
-          font-size: 12px
-        }
-
-        .faq-item.active .faq-a {
-          max-height: 250px
-        }
-
-        .cta-title {
-          font-size: clamp(32px, 10vw, 56px)
-        }
-
-        .cta-sub {
-          font-size: 13px;
-          margin: 16px auto 32px
-        }
-
-        .contact-form {
-          grid-template-columns: 1fr;
-          gap: 10px
-        }
-
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-          padding: 14px 16px;
-          font-size: 13px
-        }
-
-        .form-btn {
-          padding: 14px 28px;
-          font-size: 12px;
-          width: 100%
-        }
-
-        .big-text {
-          font-size: clamp(60px, 16vw, 100px)
-        }
-
-        .why-point {
-          padding: 16px;
-          gap: 14px
-        }
-
-        .why-icon {
-          width: 36px;
-          height: 36px;
-          font-size: 16px
-        }
-
-        .why-point-title {
-          font-size: 16px
-        }
-
-        .why-point-desc {
-          font-size: 11px
-        }
-
-        .why-grid {
-          gap: 24px
-        }
-
-        .whatsapp-btn {
-          width: 48px;
-          height: 48px;
-          font-size: 22px;
-          bottom: 16px;
-          right: 16px
-        }
-
-        .back-top {
-          width: 36px;
-          height: 36px;
-          font-size: 14px;
-          bottom: 72px;
-          right: 16px
-        }
-
-        footer {
-          padding: 32px 16px;
-          gap: 16px
-        }
-
-        .footer-logo {
-          font-size: 18px
-        }
-
-        .footer-logo-img {
-          height: 45px
-        }
-
-        .footer-links {
-          gap: 12px
-        }
-
-        .footer-links a {
-          font-size: 10px;
-          letter-spacing: 1px
-        }
-
-        .footer-social a {
-          width: 34px;
-          height: 34px;
-          font-size: 14px
-        }
-
-        .footer-copy {
-          font-size: 9px
-        }
-
-        .mobile-menu {
-          width: 100%;
-          padding: 90px 24px 32px
-        }
-
-        .mobile-menu a {
-          font-size: 16px;
-          padding: 14px 0
-        }
-      }
-
-      /* VERY SMALL PHONES (360px) */
-      @media(max-width:360px) {
-        .hero-title {
-          font-size: clamp(30px, 10vw, 44px)
-        }
-
-        .nav-logo {
-          font-size: 16px;
-          letter-spacing: 1px
-        }
-
-        .nav-logo-img {
-          height: 40px
-        }
-
-        .section-title {
-          font-size: clamp(28px, 8vw, 40px)
-        }
-
-        .cta-title {
-          font-size: clamp(28px, 9vw, 44px)
-        }
-
-        .pricing-price {
-          font-size: 36px
-        }
-
-        .result-num {
-          font-size: 40px
-        }
-      }
-
-
-      /* ========== FINAL RESPONSIVE OVERHAUL ========== */
-      .hamburger {
-        display: none !important;
-      }
-
-      @media screen and (max-width: 1024px) {
-        nav {
-          padding: 15px 25px !important;
-        }
-
-        .nav-links {
-          display: none !important;
-        }
-
-        .hamburger {
-          display: flex !important;
-        }
-
-        .nav-logo-img {
-          height: 50px !important;
-        }
-
-        .hero {
-          padding: 100px 30px 60px !important;
-          min-height: auto !important;
-        }
-
-        .hero-title {
-          font-size: clamp(50px, 9vw, 90px) !important;
-        }
-
-        .section,
-        .why-section,
-        .process-section,
-        .results-section,
-        .testimonials,
-        .cta-section {
-          padding: 80px 30px !important;
-        }
-
-        .services-grid,
-        .portfolio-grid,
-        .pricing-grid,
-        .team-grid {
-          grid-template-columns: 1fr 1fr !important;
-          gap: 15px !important;
-        }
-      }
-
-      @media screen and (max-width: 640px) {
-        .hero-title {
-          font-size: clamp(40px, 11vw, 60px) !important;
-        }
-
-        .section-title {
-          font-size: clamp(34px, 8vw, 48px) !important;
-        }
-
-        .services-grid,
-        .portfolio-grid,
-        .pricing-grid,
-        .team-grid,
-        .process-steps,
-        .results-grid {
-          grid-template-columns: 1fr !important;
-          gap: 20px !important;
-        }
-
-        .contact-form {
-          grid-template-columns: 1fr !important;
-        }
-
-        .footer-links {
-          flex-direction: column !important;
-          align-items: center !important;
-          gap: 15px !important;
-        }
-      }
+    /* ========== CLEAN RESPONSIVE ENGINE ========== */
+
+    /* Desktop Adjustments */
+    .hamburger { display: none !important; }
+
+    /* TABLET (1024px & below) */
+    @media screen and (max-width: 1024px) {
+      nav { padding: 15px 25px !important; }
+      .nav-links { display: none !important; }
+      .hamburger { display: flex !important; }
+      .nav-logo-img { height: 44px !important; }
+      
+      .hero { padding: 100px 30px 60px !important; min-height: auto !important; }
+      .hero-title { font-size: clamp(50px, 9vw, 90px) !important; }
+      .hero-stats { position: relative !important; right: auto !important; bottom: auto !important; flex-direction: row !important; gap: 30px !important; margin-top: 40px !important; }
+      
+      .section, .why-section, .process-section, .results-section, .testimonials, .cta-section { padding: 80px 30px !important; }
+      
+      .services-grid, .portfolio-grid, .team-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+      .process-steps, .results-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+
+    /* MOBILE (640px & below) */
+    @media screen and (max-width: 640px) {
+      .hero-title { font-size: clamp(40px, 11vw, 65px) !important; }
+      .section-title { font-size: clamp(34px, 8vw, 52px) !important; }
+      
+      .asymmetric-grid { grid-template-columns: 1fr !important; }
+      .big-card, .small-card { grid-column: span 1 !important; margin: 0 !important; padding: 40px 30px !important; min-height: auto !important; }
+      
+      .hero-side-cards { display: none !important; }
+      .contact-form { grid-template-columns: 1fr !important; }
+      
+      .footer-links { flex-direction: column !important; align-items: center !important; gap: 15px !important; }
+      .cta-title { font-size: clamp(48px, 10vw, 80px) !important; }
+    }
+
+    /* SMALL MOBILE (380px & below) */
+    @media screen and (max-width: 380px) {
+      .hero-title { font-size: 38px !important; }
+      .nav-logo { font-size: 18px !important; }
+      .nav-logo-img { height: 32px !important; }
+      .btn-primary { width: 100% !important; text-align: center !important; }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-logo">
+      <span class="preloader-text">METRIX MIND</span>
+    </div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar" id="preloaderBar"></div>
+    </div>
+  </div>
 
   <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
@@ -2550,19 +1770,18 @@
   <nav>
     <div class="nav-logo"><img src="assets/logo.png" alt="BL Logo" class="nav-logo-img"> METRIX <span>MIND</span></div>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#why">Why Us</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#results">Results</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog-index.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get Started</a>
+    <a href="#contact" class="nav-cta magnetic-btn">Get Started</a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#why">Why Us</a>
-    <a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#results">Results</a>
+    <a href="#process">Process</a><a href="#results">Results</a>
     <a href="#faq">FAQ</a><a href="#contact">Contact</a>
   </div>
 
@@ -2570,242 +1789,175 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
+    
+    <!-- Floating Depth Elements -->
+    <div class="hero-blob glow-purple"></div>
+    <div class="hero-blob glow-orange" style="top:60%; right:-10%;"></div>
+
     <div class="hero-content">
-      <div class="hero-tag">AI-Powered Digital Marketing</div>
+      <div class="hero-tag reveal">Predictable Growth Engine 2.0</div>
       <h1 class="hero-title">
-        WE DON'T
-        <span class="line2">RUN ADS.</span>
-        <span class="line3 glitch" data-text="WE PRINT MONEY.">WE PRINT MONEY.</span>
+        <span class="reveal" style="display:block">PREDICTABLE</span>
+        <span class="line2 reveal" style="display:block">LEAD GEN FOR</span>
+        <span class="line3 reveal" style="display:block">LOCAL <span style="color:var(--gold)">BRANDS.</span></span>
       </h1>
-      <p class="hero-sub">Metrix Mind harnesses cutting-edge AI to turn your brand into an unstoppable revenue machine.
-        Not just marketing — domination.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Start Dominating →</a>
-        <a href="#results" class="btn-ghost"><span></span> See Results</a>
+      <p class="hero-sub reveal">Metrix Mind helps clinics and local service businesses generate qualified leads through surgical Google Ads & SEO. Results in 30 days or we work for free.</p>
+      
+      <div class="hero-actions reveal">
+        <a href="#contact" class="btn-primary magnetic-btn">Book Free Audit →</a>
+        <a href="#results" class="btn-ghost"><span></span> View Proof</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Brands Scaled</div>
+
+    <!-- Floating UI Cards (Asymmetric/Experimental) -->
+    <div class="hero-side-cards">
+      <div class="floating-card glass reveal" style="transform: rotate(-12deg); left: -100px; top: 20%;">
+        <div class="card-icon">📈</div>
+        <div class="card-val">+340%</div>
+        <div class="card-txt">Avg. ROI</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">₹12Cr+</div>
-        <div class="stat-label">Revenue Generated</div>
+      <div class="floating-card glass reveal" style="transform: rotate(8deg); right: -50px; bottom: 15%;">
+        <div class="card-icon">⚡</div>
+        <div class="card-val">500+</div>
+        <div class="card-txt">Brands Scaled</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">98%</div>
-        <div class="stat-label">Client Retention</div>
-      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="mouse"></div>
+      <span>SCROLL TO EXPLORE</span>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <div class="marquee-item">SEO DOMINATION</div>
-      <div class="marquee-item">PAID ADS</div>
-      <div class="marquee-item">SOCIAL MEDIA</div>
-      <div class="marquee-item">AI STRATEGY</div>
-      <div class="marquee-item">BRAND IDENTITY</div>
-      <div class="marquee-item">CONTENT CREATION</div>
-      <div class="marquee-item">LEAD GENERATION</div>
-      <div class="marquee-item">EMAIL MARKETING</div>
-      <div class="marquee-item">SEO DOMINATION</div>
-      <div class="marquee-item">PAID ADS</div>
-      <div class="marquee-item">SOCIAL MEDIA</div>
-      <div class="marquee-item">AI STRATEGY</div>
-      <div class="marquee-item">BRAND IDENTITY</div>
-      <div class="marquee-item">CONTENT CREATION</div>
-      <div class="marquee-item">LEAD GENERATION</div>
-      <div class="marquee-item">EMAIL MARKETING</div>
-    </div>
-  </div>
-
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title reveal">SERVICES THAT<br><span style="color:var(--gold)">ACTUALLY</span> WORK</h2>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <span class="service-num">01</span>
-        <span class="service-icon">🤖</span>
-        <div class="service-name">AI-Powered Ads</div>
-        <p class="service-desc">Our AI doesn't guess — it knows. Machine learning algorithms that optimize your ad spend
-          in real-time for maximum ROI on Google & Meta.</p>
-        <div class="service-arrow">Explore → </div>
-      </div>
-      <div class="service-card reveal" style="transition-delay:0.1s">
-        <span class="service-num">02</span>
-        <span class="service-icon">📈</span>
-        <div class="service-name">SEO Domination</div>
-        <p class="service-desc">Rank #1, stay #1. Our AI-driven SEO strategies build authority that competitors can't
-          touch. Your customers will find you first, always.</p>
-        <div class="service-arrow">Explore → </div>
-      </div>
-      <div class="service-card reveal" style="transition-delay:0.2s">
-        <span class="service-num">03</span>
-        <span class="service-icon">🔥</span>
-        <div class="service-name">Social Media Blitz</div>
-        <p class="service-desc">Viral content engineered by AI. We turn your brand into a content powerhouse that stops
-          thumbs and converts scrollers into buyers.</p>
-        <div class="service-arrow">Explore → </div>
-      </div>
-      <div class="service-card reveal" style="transition-delay:0.1s">
-        <span class="service-num">04</span>
-        <span class="service-icon">⚡</span>
-        <div class="service-name">Lead Generation</div>
-        <p class="service-desc">Precision-targeted leads that actually close. Our AI identifies your perfect customer
-          and puts your offer right in front of them.</p>
-        <div class="service-arrow">Explore → </div>
-      </div>
-      <div class="service-card reveal" style="transition-delay:0.2s">
-        <span class="service-num">05</span>
-        <span class="service-icon">🎯</span>
-        <div class="service-name">Brand Identity</div>
-        <p class="service-desc">Your brand should make people stop and stare. We craft identities so powerful that
-          customers become lifetime evangelists.</p>
-        <div class="service-arrow">Explore → </div>
-      </div>
-      <div class="service-card reveal" style="transition-delay:0.3s">
-        <span class="service-num">06</span>
-        <span class="service-icon">💌</span>
-        <div class="service-name">Email Marketing</div>
-        <p class="service-desc">AI-personalized sequences that feel human. Open rates that embarrass industry averages.
-          Revenue on autopilot, 24/7.</p>
-        <div class="service-arrow">Explore → </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY US -->
-  <section class="why-section" id="why">
-    <div class="section-label">Why Metrix Mind</div>
-    <h2 class="section-title reveal">WHY WE'RE<br><span style="color:var(--gold)">DIFFERENT</span></h2>
-    <div class="why-grid">
-      <div class="why-left">
-        <div class="big-text">AI</div>
-        <div class="why-points">
-          <div class="why-point reveal">
-            <div class="why-icon">🧠</div>
-            <div>
-              <div class="why-point-title">AI That Actually Thinks</div>
-              <p class="why-point-desc">Not buzzwords — real AI systems that analyze data, predict trends, and optimize
-                campaigns while you sleep.</p>
-            </div>
-          </div>
-          <div class="why-point reveal" style="transition-delay:0.15s">
-            <div class="why-icon">📊</div>
-            <div>
-              <div class="why-point-title">Data-Driven, Zero Guesswork</div>
-              <p class="why-point-desc">Every decision is backed by numbers. No gut feelings, no vanity metrics — just
-                hard results that move your bottom line.</p>
-            </div>
-          </div>
-          <div class="why-point reveal" style="transition-delay:0.3s">
-            <div class="why-icon">🚀</div>
-            <div>
-              <div class="why-point-title">Results in 30 Days</div>
-              <p class="why-point-desc">We move fast. Real traction in 30 days or we work for free. That's how confident
-                we are in what we deliver.</p>
-            </div>
-          </div>
-          <div class="why-point reveal" style="transition-delay:0.45s">
-            <div class="why-icon">🛡️</div>
-            <div>
-              <div class="why-point-title">Dedicated War Room Team</div>
-              <p class="why-point-desc">Your brand gets a dedicated team obsessed with your growth. Not a junior intern
-                — senior strategists who eat data for breakfast.</p>
-            </div>
+    <!-- SERVICES OVERHAUL (Asymmetric) -->
+  <section class="section" id="services" style="overflow:visible;">
+    <div class="section-label">The Arsenal</div>
+    <h2 class="section-title reveal">ELITE <span style="color:var(--gold)">LEAD GEN</span> SYSTEMS</h2>
+    
+    <div class="asymmetric-grid">
+      <!-- 01 LOCAL SEO -->
+      <div class="big-card glass reveal" onclick="window.location.href='local-seo.html'">
+        <div class="card-content">
+          <div class="card-tag">#1 Rankings</div>
+          <h3 class="card-title">Local SEO Domination</h3>
+          <p class="card-desc">We make you the "Unavoidable Choice" in your city. From Google Maps to top-of-page visibility for high-intent clinical keywords.</p>
+          <div class="card-stats">
+            <div class="c-stat"><span>3x</span> Calls</div>
+            <div class="c-stat"><span>90 Days</span> Maturity</div>
           </div>
         </div>
+        <div class="card-bg-icon"><i class="fas fa-map-marker-alt"></i></div>
       </div>
-      <div style="position:relative;">
-        <div
-          style="background: linear-gradient(135deg, rgba(255,212,94,0.06), rgba(123,47,255,0.06)); border: 1px solid rgba(255,212,94,0.12); padding: 60px 48px; height: 100%; display:flex; flex-direction:column; justify-content:center; gap:32px;">
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:var(--gold);">OUR
-            PROMISE</div>
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,5vw,64px); line-height:1.1;">IF YOU
-            DON'T GROW, <span style="color:var(--orange)">WE DON'T EAT.</span></div>
-          <p style="color:var(--muted); font-size:15px; line-height:1.8;">We don't just take your money and run reports.
-            We're performance partners — our success is directly tied to yours. No results? No invoice.</p>
-          <div style="width:60px; height:2px; background:linear-gradient(90deg,var(--gold),var(--orange));"></div>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
-              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">Performance-based pricing
-                available</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
-              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">30-day money-back
-                guarantee</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
-              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">No long-term lock-in
-                contracts</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; font-size:14px;">
-              <span style="color:var(--gold);">✓</span> <span style="color:var(--muted);">24/7 campaign
-                monitoring</span>
-            </div>
+
+      <!-- 02 GOOGLE ADS -->
+      <div class="small-card glass reveal" style="margin-top: 80px;" onclick="window.location.href='google-ads-agency.html'">
+        <div class="card-tag">High Intent</div>
+        <h3 class="card-title">Surgical Google Ads</h3>
+        <p class="card-desc">Capturing intent exactly when the patient searches. No junk leads, only high-conversion appointments.</p>
+        <div class="card-bg-icon" style="bottom:-20px; right:-20px;"><i class="fab fa-google"></i></div>
+      </div>
+
+      <!-- 03 META ADS -->
+      <div class="small-card glass reveal" style="margin-top: -40px;" onclick="window.location.href='meta-ads-agency.html'">
+        <div class="card-tag">Scaling</div>
+        <h3 class="card-title">Meta Social Scaling</h3>
+        <p class="card-desc">Interrupt the scroll with authority. We build brand omnipresence that converts followers into footfall.</p>
+        <div class="card-bg-icon"><i class="fab fa-facebook-f"></i></div>
+      </div>
+
+      <!-- 04 LEAD GEN MACHINERY -->
+      <div class="big-card glass reveal" style="background: linear-gradient(135deg, rgba(255,215,0,0.05), transparent);" onclick="window.location.href='lead-generation-services.html'">
+        <div class="card-content">
+          <div class="card-tag">The Engine</div>
+          <h3 class="card-title">Lead Gen Machinery</h3>
+          <p class="card-desc">A complete 'LiftUp' funnel architecture. From lead magnets to qualification bots, we build the system that sells for you.</p>
+          <div class="card-stats">
+            <div class="c-stat"><span>400+</span>Avg Leads/Mo</div>
+            <div class="c-stat"><span>Verified</span> ROAS</div>
           </div>
         </div>
+        <div class="card-bg-icon" style="opacity:0.05;"><i class="fas fa-rocket"></i></div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="process-section" id="process">
-    <div class="section-label">How We Work</div>
-    <h2 class="section-title reveal">THE <span style="color:var(--gold)">LIFTUP</span><br>PROCESS</h2>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="step-num">01</div>
-        <div class="step-title">Deep Audit</div>
-        <p class="step-desc">We dissect your brand, competitors, and market. 360° analysis that reveals exactly where
-          your money is being left on the table.</p>
+  <!-- METHODOLOGY (Replaces Process) -->
+  <section class="section" style="background:var(--dim); position:relative;">
+    <div class="method-glow"></div>
+    <div class="section-label">The Method</div>
+    <h2 class="section-title reveal">OUR <span style="color:var(--gold)">METHODOLOGY</span></h2>
+    
+    <div class="method-flow">
+      <div class="method-item reveal">
+        <div class="method-line"></div>
+        <div class="method-circle">01</div>
+        <div class="method-content">
+          <h3>Surgical Audit</h3>
+          <p>We dissect your market gap and competitor leaks.</p>
+        </div>
       </div>
-      <div class="process-step reveal" style="transition-delay:0.15s">
-        <div class="step-num">02</div>
-        <div class="step-title">AI Strategy</div>
-        <p class="step-desc">Our AI builds a custom battle plan. Every channel, every rupee, every touchpoint mapped for
-          maximum impact.</p>
+      <div class="method-item reveal">
+        <div class="method-line"></div>
+        <div class="method-circle">02</div>
+        <div class="method-content">
+          <h3>Funnel Forge</h3>
+          <p>Building high-conversion assets that capture intent.</p>
+        </div>
       </div>
-      <div class="process-step reveal" style="transition-delay:0.3s">
-        <div class="step-num">03</div>
-        <div class="step-title">Execute Fast</div>
-        <p class="step-desc">Speed is money. We launch, test, and iterate at machine speed. While others plan, we're
-          already scaling what works.</p>
-      </div>
-      <div class="process-step reveal" style="transition-delay:0.45s">
-        <div class="step-num">04</div>
-        <div class="step-title">Scale & Win</div>
-        <p class="step-desc">Double down on winners, cut losers instantly. Compounding growth that makes your initial
-          investment look like a rounding error.</p>
+      <div class="method-item reveal">
+        <div class="method-line"></div>
+        <div class="method-circle">03</div>
+        <div class="method-content">
+          <h3>Omnipresence</h3>
+          <p>Deploying multi-channel ads to dominate your niche.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- RESULTS -->
   <section class="results-section" id="results">
-    <div class="section-label">The Numbers</div>
-    <h2 class="section-title reveal">RESULTS THAT<br>SPEAK LOUDER</h2>
+    <div class="hero-blob glow-purple" style="opacity:0.2; top:10%; left:20%;"></div>
+    <div class="hero-blob glow-orange" style="opacity:0.1; bottom:10%; right:10%;"></div>
+    
+    <div class="section-label">Performance</div>
+    <h2 class="section-title reveal">PROVEN <span style="color:var(--gold)">LEAD GEN</span> AUTHORITY</h2>
     <div class="results-grid">
       <div class="result-card reveal">
-        <div class="result-num">500+</div>
+        <div class="result-num" data-target="500">0+</div>
         <div class="result-label">Brands Scaled</div>
+        <div class="result-detail">
+          <strong>120+</strong> Clinics Dominated<br>
+          <strong>150+</strong> E-commerce Scaled<br>
+          <strong>80+</strong> Real Estate Systems
+        </div>
       </div>
       <div class="result-card reveal" style="transition-delay:0.1s">
-        <div class="result-num">₹12Cr+</div>
-        <div class="result-label">Revenue Generated</div>
+        <div class="result-num" data-target="12">0Cr+</div>
+        <div class="result-label">Client Revenue</div>
+        <div class="result-detail">
+          Direct attributed revenue generated across <strong>2023-2025</strong> advertising cycles.
+        </div>
       </div>
       <div class="result-card reveal" style="transition-delay:0.2s">
-        <div class="result-num">340%</div>
-        <div class="result-label">Avg. ROI Delivered</div>
+        <div class="result-num" data-target="340">0%</div>
+        <div class="result-label">Avg. ROI</div>
+        <div class="result-detail">
+          <strong>4.8x</strong> Verified ROAS<br>
+          <strong>2.4%</strong> Average CTR<br>
+          <strong>₹42</strong> Avg Cost Per Lead
+        </div>
       </div>
       <div class="result-card reveal" style="transition-delay:0.3s">
-        <div class="result-num">98%</div>
-        <div class="result-label">Client Retention Rate</div>
+        <div class="result-num" data-target="98">0%</div>
+        <div class="result-label">Retention Rate</div>
+        <div class="result-detail">
+          Calculated for active <strong>24-month</strong> retainers with clinical partners.
+        </div>
       </div>
+    </div>
+    <div style="margin-top:60px; text-align:center; font-size:11px; color:var(--muted); font-family:'Space Mono', monospace; opacity:0.5;">
+      VERIFIED VIA GOOGLE ADS & META BUSINESS SUITE · 2025 DATA HUD
     </div>
   </section>
 
@@ -2816,37 +1968,34 @@
     <div class="testi-grid">
       <div class="testi-card reveal">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">Metrix Mind completely transformed our online presence. In just 3 months, our leads
-          tripled and our cost per acquisition dropped by 60%. Unbelievable results.</p>
+        <p class="testi-text">Metrix Mind completely transformed our clinic. Leads tripled in 3 months and CPL dropped by 60%. Verifiable results that impact our bottom line.</p>
         <div class="testi-author">
-          <div class="testi-avatar">R</div>
+          <div class="testi-avatar" style="background-image: url('https://ui-avatars.com/api/?name=RS&background=7B2FFF&color=fff'); background-size: cover;"></div>
           <div>
-            <div class="testi-name">Rahul Sharma</div>
-            <div class="testi-role">CEO, TechVista Solutions</div>
+            <div class="testi-name">Rahul Sharma <a href="https://linkedin.com/in/metrixmind-sharma" target="_blank" style="color:var(--gold); font-size:10px; margin-left:5px;"><i class="fab fa-linkedin"></i></a></div>
+            <div class="testi-role">Founder, TechVista Solutions · <span style="color:var(--gold)">Verified</span></div>
           </div>
         </div>
       </div>
       <div class="testi-card reveal" style="transition-delay:0.15s">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">I've worked with 4 agencies before. None of them came close to what Metrix Mind delivered
-          in the first 30 days. Their AI strategy is next level.</p>
+        <p class="testi-text">Their local SEO strategy for our fashion brand was a game-changer. Month-on-month growth of 40% in store visits. Highly professional team.</p>
         <div class="testi-author">
-          <div class="testi-avatar">P</div>
+          <div class="testi-avatar" style="background-image: url('https://ui-avatars.com/api/?name=PM&background=FF5C1A&color=fff'); background-size: cover;"></div>
           <div>
-            <div class="testi-name">Priya Malhotra</div>
-            <div class="testi-role">Founder, StyleHive</div>
+            <div class="testi-name">Priya Malhotra <a href="https://linkedin.com/in/metrixmind-malhotra" target="_blank" style="color:var(--gold); font-size:10px; margin-left:5px;"><i class="fab fa-linkedin"></i></a></div>
+            <div class="testi-role">Director, StyleHive · <span style="color:var(--gold)">Verified</span></div>
           </div>
         </div>
       </div>
       <div class="testi-card reveal" style="transition-delay:0.3s">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">From ₹2L/month revenue to ₹18L/month in 6 months. Metrix Mind didn't just run ads — they
-          built our entire digital engine. Absolute legends.</p>
+        <p class="testi-text">From ₹2L/month to ₹18L/month in 6 months. Their lead qualification flow ensures we only talk to high-intent local prospects.</p>
         <div class="testi-author">
-          <div class="testi-avatar">A</div>
+          <div class="testi-avatar" style="background-image: url('https://ui-avatars.com/api/?name=AV&background=FFD45E&color=000'); background-size: cover;"></div>
           <div>
-            <div class="testi-name">Amit Verma</div>
-            <div class="testi-role">Director, FreshEats India</div>
+            <div class="testi-name">Amit Verma <a href="https://linkedin.com/in/metrixmind-verma" target="_blank" style="color:var(--gold); font-size:10px; margin-left:5px;"><i class="fab fa-linkedin"></i></a></div>
+            <div class="testi-role">Founder, FreshEats India · <span style="color:var(--gold)">Verified</span></div>
           </div>
         </div>
       </div>
@@ -2860,96 +2009,115 @@
     <h2 class="section-title reveal">CASE <span style="color:var(--gold)">STUDIES</span><br>THAT PROVE IT</h2>
     <div class="portfolio-grid">
       <div class="portfolio-card reveal">
-        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(123,47,255,.3),rgba(255,92,26,.3))">🛒
-        </div>
+        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(123,47,255,.3),rgba(255,92,26,.3))">🩺</div>
         <div class="portfolio-overlay">
-          <div class="portfolio-cat">E-Commerce · Google + Meta Ads</div>
-          <div class="portfolio-name">StyleHive Fashion</div>
-          <div class="portfolio-metrics">
-            <div class="portfolio-metric"><strong>420%</strong>ROI Increase</div>
-            <div class="portfolio-metric"><strong>₹4.2Cr</strong>Revenue</div>
+          <div class="portfolio-cat">Healthcare · Dental Clinic</div>
+          <div class="portfolio-name">MediCare Plus</div>
+          <div style="font-size:11px; margin: 10px 0; color:var(--white); opacity:0.8;">
+            <strong>Problem:</strong> High cost per lead in a crowded local market.<br>
+            <strong>Strategy:</strong> Local SEO + Google Ads with landing page optimization.<br>
+            <strong>Results:</strong> 3x Leads, 60% Lower CPL.
           </div>
+          <div class="portfolio-metrics">
+            <div class="portfolio-metric"><strong>250%</strong>Traffic</div>
+            <div class="portfolio-metric"><strong>₹45</strong>Avg CPL</div>
+          </div>
+          <a href="/case-studies/medicare" class="service-arrow" style="margin-top:15px; opacity:1; transform:none;">Full Case Study →</a>
         </div>
       </div>
       <div class="portfolio-card reveal" style="transition-delay:.15s">
-        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(255,212,94,.2),rgba(255,92,26,.3))">🍕
-        </div>
+        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(255,212,94,.2),rgba(255,92,26,.3))">🏠</div>
         <div class="portfolio-overlay">
-          <div class="portfolio-cat">F&B · Social + SEO</div>
-          <div class="portfolio-name">FreshEats India</div>
-          <div class="portfolio-metrics">
-            <div class="portfolio-metric"><strong>800%</strong>Lead Growth</div>
-            <div class="portfolio-metric"><strong>₹18L/mo</strong>Revenue</div>
+          <div class="portfolio-cat">Real Estate · High Ticket</div>
+          <div class="portfolio-name">Skyline Residency</div>
+          <div style="font-size:11px; margin: 10px 0; color:var(--white); opacity:0.8;">
+            <strong>Problem:</strong> Cold leads not qualifying for site visits.<br>
+            <strong>Strategy:</strong> Multi-step FB lead form + WhatsApp automation.<br>
+            <strong>Results:</strong> 85 Qualified Leads in 45 days.
           </div>
+          <div class="portfolio-metrics">
+            <div class="portfolio-metric"><strong>₹12Cr</strong>Inventory Sold</div>
+            <div class="portfolio-metric"><strong>45%</strong>Visit Rate</div>
+          </div>
+          <a href="/case-studies/skyline" class="service-arrow" style="margin-top:15px; opacity:1; transform:none;">Full Case Study →</a>
         </div>
       </div>
       <div class="portfolio-card reveal" style="transition-delay:.3s">
-        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(255,212,94,.2))">💊
-        </div>
+        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(255,212,94,.2))">👕</div>
         <div class="portfolio-overlay">
-          <div class="portfolio-cat">Healthcare · Full Digital</div>
-          <div class="portfolio-name">MediCare Plus</div>
-          <div class="portfolio-metrics">
-            <div class="portfolio-metric"><strong>250%</strong>Traffic</div>
-            <div class="portfolio-metric"><strong>60%</strong>CPA Down</div>
+          <div class="portfolio-cat">Fashion · D2C Scale</div>
+          <div class="portfolio-name">StyleHive</div>
+          <div style="font-size:11px; margin: 10px 0; color:var(--white); opacity:0.8;">
+            <strong>Problem:</strong> Stagnant revenue with existing agency.<br>
+            <strong>Strategy:</strong> Conversion-focused Meta Ads + Email Retention.<br>
+            <strong>Results:</strong> 420% ROI Growth in 3 months.
           </div>
+          <div class="portfolio-metrics">
+            <div class="portfolio-metric"><strong>4.8x</strong>ROAS</div>
+            <div class="portfolio-metric"><strong>₹4.2Cr</strong>Revenue</div>
+          </div>
+          <a href="/case-studies/stylehive" class="service-arrow" style="margin-top:15px; opacity:1; transform:none;">Full Case Study →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="section" id="pricing" style="background:linear-gradient(135deg,#0c0c14 0%,#050507 50%,#0f0a1a 100%)">
-    <div class="section-label">Investment</div>
-    <h2 class="section-title reveal">PACKAGES THAT<br><span style="color:var(--gold)">SCALE</span> WITH YOU</h2>
-    <div class="pricing-grid">
-      <div class="pricing-card reveal">
-        <div class="pricing-name">STARTER</div>
-        <div class="pricing-desc">Perfect for brands just getting started.</div>
-        <div class="pricing-price">₹25K<small>/month</small></div>
-        <ul class="pricing-features">
-          <li>Social Media (2 platforms)</li>
-          <li>Basic SEO Optimization</li>
-          <li>4 Posts/Week</li>
-          <li>Monthly Report</li>
-          <li>Email Support</li>
-        </ul>
-        <a href="#contact" class="pricing-cta">Get Started →</a>
+  <!-- ROI CALCULATOR (Modern Tool) -->
+  <section class="section glass" id="calculator" style="margin: 60px; border-radius: 40px; border: 1px solid var(--glass-border); padding: 80px 40px;">
+    <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:60px; align-items:center;">
+      <div>
+        <div class="section-label">Revenue Engine</div>
+        <h2 class="section-title reveal">LEAD ROI<br><span style="color:var(--gold)">PREDICTOR</span></h2>
+        <p style="color:var(--muted); margin-bottom:40px; font-size:15px; max-width:400px;">See how much revenue your clinic is leaving on the table. Move the sliders to predict your growth.</p>
+        
+        <div style="display:flex; flex-direction:column; gap:30px;">
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+              <span style="font-size:12px; letter-spacing:1px; color:var(--white);">MONTHLY AD SPEND</span>
+              <span id="spendVal" style="color:var(--gold); font-weight:800;">₹50,000</span>
+            </div>
+            <input type="range" id="spendRange" min="10000" max="500000" step="5000" value="50000" oninput="updateROI()">
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+              <span style="font-size:12px; letter-spacing:1px; color:var(--white);">AVG. TREATMENT VALUE</span>
+              <span id="ticketVal" style="color:var(--gold); font-weight:800;">₹15,000</span>
+            </div>
+            <input type="range" id="ticketRange" min="5000" max="100000" step="1000" value="15000" oninput="updateROI()">
+          </div>
+        </div>
       </div>
-      <div class="pricing-card featured reveal" style="transition-delay:.15s">
-        <div class="pricing-badge">POPULAR</div>
-        <div class="pricing-name">GROWTH</div>
-        <div class="pricing-desc">For brands ready to seriously scale.</div>
-        <div class="pricing-price">₹65K<small>/month</small></div>
-        <ul class="pricing-features">
-          <li>Everything in Starter</li>
-          <li>Google + Meta Paid Ads</li>
-          <li>AI Campaign Optimization</li>
-          <li>Lead Gen Funnels</li>
-          <li>Dedicated Manager</li>
-          <li>Weekly Strategy Calls</li>
-          <li>Content + Blog</li>
-        </ul>
-        <a href="#contact" class="pricing-cta">Start Growing →</a>
-      </div>
-      <div class="pricing-card reveal" style="transition-delay:.3s">
-        <div class="pricing-name">DOMINATION</div>
-        <div class="pricing-desc">Full-stack digital domination.</div>
-        <div class="pricing-price">₹1.5L<small>/month</small></div>
-        <ul class="pricing-features">
-          <li>Everything in Growth</li>
-          <li>Full AI Marketing Stack</li>
-          <li>Brand Identity + Design</li>
-          <li>Video Production</li>
-          <li>Influencer Marketing</li>
-          <li>24/7 War Room Team</li>
-          <li>Performance Pricing</li>
-          <li>Priority Support</li>
-        </ul>
-        <a href="#contact" class="pricing-cta">Dominate Now →</a>
+
+      <div class="calc-card reveal">
+        <div style="margin-bottom:30px;">
+          <div style="font-size:11px; color:var(--muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED NEW REVENUE</div>
+          <div id="estRev" class="calc-val">₹4,50,000</div>
+        </div>
+        <div style="margin-bottom:30px;">
+          <div style="font-size:11px; color:var(--muted); margin-bottom:5px; letter-spacing:1px;">ESTIMATED LEADS / MO</div>
+          <div id="estLeads" class="calc-val">45</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center;">Claim This Growth →</a>
       </div>
     </div>
   </section>
+
+  <script>
+    function updateROI() {
+      const spend = document.getElementById('spendRange').value;
+      const ticket = document.getElementById('ticketRange').value;
+      
+      document.getElementById('spendVal').textContent = '₹' + parseInt(spend).toLocaleString();
+      document.getElementById('ticketVal').textContent = '₹' + parseInt(ticket).toLocaleString();
+      
+      // Conservative logic: ₹1100 per qualified clinical lead
+      const leads = Math.floor(spend / 1100);
+      const revenue = Math.floor(leads * 0.65 * ticket); // 65% close/show rate for clinics
+      
+      document.getElementById('estLeads').textContent = leads;
+      document.getElementById('estRev').textContent = '₹' + revenue.toLocaleString();
+    }
+  </script>
 
   <!-- TEAM -->
   <section class="section" id="team">
@@ -2957,28 +2125,16 @@
     <h2 class="section-title reveal">MEET THE<br><span style="color:var(--gold)">WAR ROOM</span> TEAM</h2>
     <div class="team-grid">
       <div class="team-card reveal">
-        <div class="team-avatar" style="background:linear-gradient(135deg,var(--purple),var(--orange))">AK</div>
-        <div class="team-name">ARUN KUMAR</div>
+        <div class="team-avatar" style="background-image: url('assets/team/chandan.png'); background-size: cover; background-position: center;"></div>
+        <div class="team-name">CHANDAN <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
         <div class="team-role">Founder & CEO</div>
-        <p class="team-bio">10+ years in digital marketing. Built and scaled 200+ brands.</p>
+        <p class="team-bio">Braveheart Founder. Scaling clinics to 8-figure months with data-driven surgical precision.</p>
       </div>
       <div class="team-card reveal" style="transition-delay:.1s">
-        <div class="team-avatar" style="background:linear-gradient(135deg,var(--gold),var(--orange))">NR</div>
-        <div class="team-name">NEHA REDDY</div>
-        <div class="team-role">Head of AI Strategy</div>
-        <p class="team-bio">Ex-Google. ML engineer turned marketer. Brain behind our AI.</p>
-      </div>
-      <div class="team-card reveal" style="transition-delay:.2s">
-        <div class="team-avatar" style="background:linear-gradient(135deg,var(--orange),var(--purple))">VS</div>
-        <div class="team-name">VIKRAM SINGH</div>
-        <div class="team-role">Creative Director</div>
-        <p class="team-bio">Award-winning designer. Makes brands impossible to ignore.</p>
-      </div>
-      <div class="team-card reveal" style="transition-delay:.3s">
-        <div class="team-avatar" style="background:linear-gradient(135deg,var(--purple),var(--gold))">PM</div>
-        <div class="team-name">PRIYA MENON</div>
-        <div class="team-role">Performance Lead</div>
-        <p class="team-bio">Managed ₹50Cr+ ad spend. ROI obsessed.</p>
+        <div class="team-avatar" style="background-image: url('assets/team/neetu.png'); background-size: cover; background-position: center;"></div>
+        <div class="team-name">NEETU <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
+        <div class="team-role">Co-Founder & Creative Director</div>
+        <p class="team-bio">Creative Visionary. Crafting psychological funnels and brand stories that convert visitors into loyal clients.</p>
       </div>
     </div>
   </section>
@@ -3036,17 +2192,25 @@
       <form class="contact-form reveal" id="contactForm">
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Email Address" required>
-        <input type="tel" placeholder="Phone Number" class="full-width">
-        <select class="full-width">
-          <option value="" disabled selected>Select Budget</option>
-          <option>Under ₹25K/mo</option>
-          <option>₹25K-65K/mo</option>
-          <option>₹65K-1.5L/mo</option>
-          <option>₹1.5L+/mo</option>
+        <input type="tel" placeholder="Phone Number" required>
+        <input type="url" placeholder="Website / GMB URL" class="full-width">
+        <select class="full-width" required>
+          <option value="" disabled selected>Monthly Ad Budget</option>
+          <option>₹25K - ₹65K</option>
+          <option>₹65K - ₹1.5L</option>
+          <option>₹1.5L+</option>
         </select>
-        <textarea placeholder="Tell us about your brand..." class="full-width"></textarea>
-        <div class="full-width" style="text-align:center"><button type="submit" class="form-btn">Book Free Strategy Call
-            →</button></div>
+        <select class="full-width" required>
+          <option value="" disabled selected>Industry</option>
+          <option>Clinic / Healthcare</option>
+          <option>Local Service</option>
+          <option>Real Estate</option>
+          <option>E-commerce</option>
+          <option>Other</option>
+        </select>
+        <input type="number" placeholder="Current Leads/Month" class="full-width">
+        <textarea placeholder="Your Primary Goal in Next 90 Days..." class="full-width"></textarea>
+        <div class="full-width" style="text-align:center"><button type="submit" class="form-btn">Book Free Lead Audit →</button></div>
         <div class="form-status full-width" id="formStatus"></div>
       </form>
     </div>
@@ -3057,82 +2221,63 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo"><img src="assets/logo.png" alt="BL Logo" class="footer-logo-img"> METRIX <span>MIND</span>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:40px; width:100%; border-bottom: 1px solid rgba(255, 212, 94, 0.08); padding-bottom:60px; margin-bottom:40px;">
+      <div>
+        <div class="footer-logo"><img src="assets/logo.png" alt="BL Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
+        <div style="margin-top:20px; font-size:12px; color:var(--muted); line-height:1.6; font-family:'Space Mono', monospace;">
+          <strong>Metrix Mind HQ</strong><br>
+          NH 10, West Cabin Block, Mundka,<br>
+          New Delhi, Delhi, 110041<br>
+          <a href="tel:+919582589655" style="color:var(--gold); text-decoration:none;">+91 95825 89655</a><br>
+          <a href="mailto:metrixmind.in@gmail.com" style="color:var(--gold); text-decoration:none;">metrixmind.in@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px; color:var(--white);">Solutions</div>
+        <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:12px;">
+          <a href="about.html">Our Story</a>
+          <a href="/case-studies">Success Stories</a>
+          <a href="blog-index.html">Growth Blog</a>
+          <a href="contact.html">Book Audit</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px; color:var(--white);">Legal</div>
+        <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:12px;">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="/refund-policy">Refund Policy</a>
+        </div>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#why">Why Us</a>
-      <a href="#process">Process</a>
-      <a href="#results">Results</a>
-      <a href="#contact">Contact</a>
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:24px;">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/metrixmind.in/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/metrixmind" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@metrixmindin" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-copy">© 2025-2026 Metrix Mind. Registered in India. All Rights Reserved.</div>
     </div>
-    <div class="footer-social">
-      <a href="https://instagram.com/brand_liftup" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/brand-liftup-7305353b1/" target="_blank"><i
-          class="fab fa-linkedin-in"></i></a>
-      <a href="https://twitter.com/brandliftup" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://facebook.com/brandliftup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.youtube.com/@HeyChandans" target="_blank"><i class="fab fa-youtube"></i></a>
-    </div>
-    <div class="footer-copy">© 2025-2026 Metrix Mind. All Rights Reserved.</div>
   </footer>
   <a href="https://wa.me/919582589655?text=Hi%20Brand%20Liftup!" class="whatsapp-btn" target="_blank"><i
       class="fab fa-whatsapp"></i></a>
   <a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
 
+  <script src="assets/main.js"></script>
   <script>
-    // CURSOR
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-    });
-
-    function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        ring.style.width = '60px';
-        ring.style.height = '60px';
-        ring.style.borderColor = 'var(--orange)';
-      });
-      el.addEventListener('mouseleave', () => {
-        ring.style.width = '40px';
-        ring.style.height = '40px';
-        ring.style.borderColor = 'var(--gold)';
-      });
-    });
-
-    // SCROLL REVEAL
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-
+    // Page Specific Logic
     // COUNTER ANIMATION
     function animateCount(el, target, prefix = '', suffix = '') {
-      let start = 0;
-      const duration = 2000;
+      let start = null;
+      const duration = 2500;
       const step = (timestamp) => {
         if (!start) start = timestamp;
         const progress = Math.min((timestamp - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+        const eased = 1 - Math.pow(1 - progress, 4); // Smoother ease
         const val = Math.floor(eased * target);
-        el.textContent = prefix + val + suffix;
+        el.textContent = prefix + val.toLocaleString() + suffix;
         if (progress < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
@@ -3141,37 +2286,78 @@
     const resultsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const nums = entry.target.querySelectorAll('.result-num, .stat-num');
+          const nums = entry.target.querySelectorAll('.result-num');
           nums.forEach(num => {
-            const text = num.textContent;
-            if (text.includes('₹12Cr')) animateCount(num, 12, '₹', 'Cr+');
-            else if (text.includes('340')) animateCount(num, 340, '', '%');
-            else if (text.includes('98')) animateCount(num, 98, '', '%');
-            else if (text.includes('500')) animateCount(num, 500, '', '+');
+            const target = parseFloat(num.getAttribute('data-target'));
+            const originalText = num.textContent;
+            let prefix = '', suffix = '';
+            
+            if (originalText.includes('Cr+')) { prefix = '₹'; suffix = 'Cr+'; }
+            else if (originalText.includes('%')) { suffix = '%'; }
+            else if (originalText.includes('+')) { suffix = '+'; }
+            
+            animateCount(num, target, prefix, suffix);
           });
           resultsObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.results-section, .hero-stats').forEach(el => resultsObserver.observe(el));
+    document.querySelectorAll('.results-section').forEach(el => resultsObserver.observe(el));
 
-    // HAMBURGER
-    const hb = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu'), mo = document.getElementById('mobileOverlay');
-    if (hb) {
-      hb.onclick = () => { hb.classList.toggle('active'); mm.classList.toggle('active'); mo.classList.toggle('active') };
-      mo.onclick = () => { hb.classList.remove('active'); mm.classList.remove('active'); mo.classList.remove('active') };
-      mm.querySelectorAll('a').forEach(a => a.onclick = () => { hb.classList.remove('active'); mm.classList.remove('active'); mo.classList.remove('active') })
-    }
     // FAQ
     document.querySelectorAll('.faq-q').forEach(q => q.onclick = () => { const i = q.parentElement, w = i.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('active')); if (!w) i.classList.add('active') });
+    
     // BACK TOP
     const bt = document.getElementById('backTop');
-    window.addEventListener('scroll', () => { if (window.scrollY > 600) bt.classList.add('visible'); else bt.classList.remove('visible') });
+    if (bt) {
+      window.addEventListener('scroll', () => { if (window.scrollY > 600) bt.classList.add('visible'); else bt.classList.remove('visible') });
+    }
+
     // FORM
     const cf = document.getElementById('contactForm');
     if (cf) cf.onsubmit = e => { e.preventDefault(); document.getElementById('formStatus').textContent = '✓ Message sent! We\'ll call within 24hrs.'; cf.reset(); setTimeout(() => document.getElementById('formStatus').textContent = '', 5000) };
+
+    // Preloader Animation
+    window.addEventListener('load', () => {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          const heroTl = gsap.timeline();
+          heroTl.from('.hero-tag', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' });
+          heroTl.from('.hero-title span', { y: 100, opacity: 0, duration: 1, stagger: 0.2, ease: 'power4.out' }, "-=0.4");
+          heroTl.from('.hero-sub', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out' }, "-=0.6");
+          heroTl.from('.hero-actions', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out' }, "-=0.6");
+        }
+      });
+
+      tl.to('#preloaderBar', { width: '100%', duration: 1.2, ease: 'power3.inOut' })
+        .to('.preloader-text', { y: '0%', duration: 0.8, ease: 'power3.out' }, "-=0.4")
+        .to('#preloader', { yPercent: -100, duration: 1, ease: 'power4.inOut', delay: 0.3 });
+    });
+
+    // Parallax Hero Cards
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX - window.innerWidth / 2) * 0.05;
+      const y = (e.clientY - window.innerHeight / 2) * 0.05;
+      gsap.to('.floating-card', { x: x, y: y, duration: 1, ease: 'power2.out' });
+    });
+
+    // Methodology Line Draw
+    document.querySelectorAll('.method-item').forEach((item) => {
+      const line = item.querySelector('.method-line');
+      if(line) {
+        gsap.from(line, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top center",
+            end: "bottom center",
+            scrub: true
+          },
+          scaleY: 0,
+          transformOrigin: "top"
+        });
+      }
+    });
   </script>
 </body>
-
 </html>
