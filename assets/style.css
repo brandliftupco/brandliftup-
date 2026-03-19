@@ -476,3 +476,157 @@ body:not(.light-mode) .fa-sun { display: block; }
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============ SERVICES HORIZONTAL SCROLL SHOWCASE ============ */
+.svc-showcase {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+.svc-showcase-inner {
+  padding: 120px 60px 80px;
+}
+.svc-showcase-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.svc-scroll-track {
+  display: flex;
+  gap: 30px;
+  padding: 20px 0;
+  width: max-content;
+  will-change: transform;
+}
+.svc-scroll-card {
+  width: 340px;
+  min-height: 420px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px 30px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.svc-scroll-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 60px rgba(255, 212, 94, 0.1);
+}
+.svc-card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  color: var(--gold);
+  opacity: 0.08;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  line-height: 1;
+  pointer-events: none;
+}
+.svc-card-icon {
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  transition: transform 0.4s;
+}
+.svc-scroll-card:hover .svc-card-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+.svc-card-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(255, 212, 94, 0.08);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.svc-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+.svc-card-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+.svc-card-stat {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+.svc-card-stat span {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 8px;
+}
+.svc-card-arrow {
+  font-size: 20px;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+.svc-scroll-card:hover .svc-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Glow effect behind active card */
+.svc-scroll-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,212,94,0.15), transparent, rgba(123,47,255,0.1));
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: -1;
+}
+.svc-scroll-card:hover::before {
+  opacity: 1;
+}
+
+/* Progress indicator */
+.svc-scroll-progress {
+  width: 100%;
+  height: 2px;
+  background: var(--glass-border);
+  margin-top: 40px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.svc-scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.1s;
+}
+
+@media (max-width: 768px) {
+  .svc-showcase-inner { padding: 80px 20px 60px; }
+  .svc-scroll-card { width: 280px; min-height: 380px; padding: 30px 24px; }
+  .svc-card-title { font-size: 24px; }
+  .svc-card-num { font-size: 56px; }
+}
