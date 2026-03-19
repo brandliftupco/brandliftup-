@@ -2000,51 +2000,86 @@
     <a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
+  <!-- HERO - Premium Animated -->
+  <section class="hero-premium" id="hero">
+    <!-- Animated gradient orbs -->
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
     
-    <!-- Floating Depth Elements -->
-    <div class="hero-blob glow-purple"></div>
-    <div class="hero-blob glow-orange" style="top:60%; right:-10%;"></div>
+    <!-- Particle canvas -->
+    <canvas id="heroParticles" class="hero-particles"></canvas>
+    
+    <!-- Grid overlay -->
+    <div class="hero-grid-overlay"></div>
 
-    <div class="hero-content">
-      <div class="hero-tag reveal">Predictable Growth Engine 2.0</div>
-      <h1 class="hero-title">
-        <span class="reveal" style="display:block">PREDICTABLE</span>
-        <span class="line2 reveal" style="display:block">LEAD GEN FOR</span>
-        <span class="line3 reveal" style="display:block">LOCAL <span style="color:var(--gold)">BRANDS.</span></span>
+    <!-- Main content -->
+    <div class="hero-premium-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>AI-Powered Growth Engine</span>
+      </div>
+
+      <h1 class="hero-mega-title">
+        <span class="hero-line hero-line-1">WE BUILD</span>
+        <span class="hero-line hero-line-2">
+          <span class="hero-typed-wrapper">
+            <span class="hero-typed" id="heroTyped"></span>
+            <span class="typed-cursor">|</span>
+          </span>
+        </span>
+        <span class="hero-line hero-line-3">THAT <span class="gold-gradient">SCALE.</span></span>
       </h1>
-      <p class="hero-sub reveal">Metrix Mind helps clinics and local service businesses generate qualified leads through surgical Google Ads & SEO. Results in 30 days or we work for free.</p>
+
+      <p class="hero-premium-sub">From SEO & Google Ads to AI Chatbots & Website Building — we help<br>local brands generate predictable growth. <strong style="color:var(--gold)">Results in 30 days or we work free.</strong></p>
       
-      <div class="hero-actions reveal">
-        <a href="#contact" class="btn-primary magnetic-btn">Book Free Audit →</a>
-        <a href="#results" class="btn-ghost"><span></span> View Proof</a>
+      <div class="hero-premium-actions">
+        <a href="contact.html" class="hero-btn-primary magnetic-btn">
+          <span>Book Free Audit</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="results.html" class="hero-btn-outline">
+          <span class="btn-play-icon">▶</span>
+          <span>See Results</span>
+        </a>
+      </div>
+
+      <!-- Animated stats row -->
+      <div class="hero-stats-row">
+        <div class="hero-stat-item">
+          <div class="hero-stat-val" data-count="500">0</div>
+          <div class="hero-stat-plus">+</div>
+          <div class="hero-stat-label">Brands Scaled</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-val" data-count="340">0</div>
+          <div class="hero-stat-plus">%</div>
+          <div class="hero-stat-label">Avg. ROI</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-val" data-count="98">0</div>
+          <div class="hero-stat-plus">%</div>
+          <div class="hero-stat-label">Client Retention</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-val" data-count="30">0</div>
+          <div class="hero-stat-plus">+</div>
+          <div class="hero-stat-label">Industries</div>
+        </div>
       </div>
     </div>
 
-    <!-- Floating UI Cards (Asymmetric/Experimental) -->
-    <div class="hero-side-cards">
-      <div class="floating-card glass reveal" style="transform: rotate(-12deg); left: -100px; top: 20%;">
-        <div class="card-icon">📈</div>
-        <div class="card-val">+340%</div>
-        <div class="card-txt">Avg. ROI</div>
-      </div>
-      <div class="floating-card glass reveal" style="transform: rotate(8deg); right: -50px; bottom: 15%;">
-        <div class="card-icon">⚡</div>
-        <div class="card-val">500+</div>
-        <div class="card-txt">Brands Scaled</div>
-      </div>
-    </div>
-
-    <div class="hero-scroll-indicator">
-      <div class="mouse"></div>
-      <span>SCROLL TO EXPLORE</span>
+    <!-- Scroll indicator -->
+    <div class="hero-scroll-down">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
     </div>
   </section>
 
-    <!-- SERVICES - Horizontal Scroll Showcase -->
+  <!-- SERVICES - Horizontal Scroll Showcase -->
   <section class="svc-showcase" id="services">
     <div class="svc-showcase-inner">
       <div class="svc-showcase-header">
@@ -2649,6 +2684,133 @@
         }
       }
     );
+  })();
+  </script>
+  
+  <!-- Premium Hero JS -->
+  <script>
+  // ===== TYPEWRITER =====
+  (function(){
+    const words = ['CHATBOTS', 'WEBSITES', 'ADS', 'SEO', 'AI AGENTS', 'GROWTH'];
+    const el = document.getElementById('heroTyped');
+    if(!el) return;
+    let wordIdx = 0, charIdx = 0, isDeleting = false;
+    
+    function type() {
+      const word = words[wordIdx];
+      if (isDeleting) {
+        el.textContent = word.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        el.textContent = word.substring(0, charIdx + 1);
+        charIdx++;
+      }
+      
+      let delay = isDeleting ? 60 : 120;
+      
+      if (!isDeleting && charIdx === word.length) {
+        delay = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        wordIdx = (wordIdx + 1) % words.length;
+        delay = 400;
+      }
+      setTimeout(type, delay);
+    }
+    setTimeout(type, 1500);
+  })();
+
+  // ===== PARTICLES =====
+  (function(){
+    const canvas = document.getElementById('heroParticles');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    
+    function resize() {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.4 + 0.1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 212, 94, ' + this.opacity + ')';
+        ctx.fill();
+      }
+    }
+    
+    for(let i = 0; i < 60; i++) particles.push(new Particle());
+    
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => { p.update(); p.draw(); });
+      
+      // Draw connection lines
+      for(let i = 0; i < particles.length; i++) {
+        for(let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if(dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(255, 212, 94, ' + (0.06 * (1 - dist/120)) + ')';
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // ===== COUNTER ANIMATION =====
+  (function(){
+    const stats = document.querySelectorAll('.hero-stat-val[data-count]');
+    if(!stats.length) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.count);
+          let current = 0;
+          const step = target / 60;
+          const timer = setInterval(() => {
+            current += step;
+            if(current >= target) {
+              el.textContent = target;
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(current);
+            }
+          }, 25);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    stats.forEach(s => observer.observe(s));
   })();
   </script>
   <!-- EXIT POPUP -->
