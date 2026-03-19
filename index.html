@@ -205,11 +205,11 @@
   
   <link rel="stylesheet" href="assets/style.css">
   
-  <!-- GSAP & ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <!-- GSAP & ScrollTrigger (must load before main.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js" defer></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
   <style>
     /* Page Specific Styles */
@@ -2520,8 +2520,11 @@
     const cf = document.getElementById('contactForm');
     if (cf) cf.onsubmit = e => { e.preventDefault(); document.getElementById('formStatus').textContent = '✓ Message sent! We\'ll call within 24hrs.'; cf.reset(); setTimeout(() => document.getElementById('formStatus').textContent = '', 5000) };
 
-    // Preloader Animation
-    window.addEventListener('load', () => {
+    // Preloader Animation (with safety fallback)
+    const startPreloaderAnimation = () => {
+      if (startPreloaderAnimation._ran) return;
+      startPreloaderAnimation._ran = true;
+
       const tl = gsap.timeline({
         onComplete: () => {
           const heroTl = gsap.timeline();
@@ -2535,7 +2538,26 @@
       tl.to('#preloaderBar', { width: '100%', duration: 1.2, ease: 'power3.inOut' })
         .to('.preloader-text', { y: '0%', duration: 0.8, ease: 'power3.out' }, "-=0.4")
         .to('#preloader', { yPercent: -100, duration: 1, ease: 'power4.inOut', delay: 0.3 });
-    });
+    };
+    startPreloaderAnimation._ran = false;
+
+    // Trigger: normal load event
+    if (document.readyState === 'complete') {
+      startPreloaderAnimation();
+    } else {
+      window.addEventListener('load', startPreloaderAnimation);
+    }
+
+    // Safety fallback: force-hide preloader after 5 seconds no matter what
+    setTimeout(() => {
+      const pre = document.getElementById('preloader');
+      if (pre && pre.style.opacity !== '0') {
+        pre.style.transition = 'opacity 0.5s, transform 0.5s';
+        pre.style.opacity = '0';
+        pre.style.transform = 'translateY(-100%)';
+        pre.style.pointerEvents = 'none';
+      }
+    }, 5000);
 
     // Parallax Hero Cards
     window.addEventListener('mousemove', (e) => {
