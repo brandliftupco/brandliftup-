@@ -1492,7 +1492,7 @@
 
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px; /* Increased gap */
       margin-top: 60px
     }
@@ -2264,6 +2264,28 @@
           </div>
         </div>
       </div>
+      <div class="testi-card reveal" style="transition-delay:0.15s">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">They built our entire website from scratch, grew our YouTube channel to 220K+ subscribers with 400+ videos. The content strategy and execution speed is incredible. Best tech marketing team.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#7B2FFF,#FF5C1A);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px;">TB</div>
+          <div>
+            <div class="testi-name">TechBin Online</div>
+            <div class="testi-role">Tech Education · <span style="color:var(--gold)">220K+ YouTube</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.3s">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Our online patient bookings went up 5x after working with Metrix Mind. Google Ads, WhatsApp chatbot, and GMB optimization helped us reach patients across 1200+ cities. Truly transformative.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px;">VU</div>
+          <div>
+            <div class="testi-name">VedicUpchar</div>
+            <div class="testi-role">Ayurvedic Healthcare · <span style="color:var(--gold)">1200+ Cities</span></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div style="text-align:center; margin-top:40px;"><a href="testimonials.html" class="btn-ghost" style="display:inline-block;">Read All Client Reviews →</a></div>
   </section>
@@ -2289,6 +2311,23 @@
             <div class="portfolio-metric"><strong>300x</strong>Growth</div>
           </div>
           <a href="contact.html" class="service-arrow" style="margin-top:15px; opacity:1; transform:none;">View Case Study →</a>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" style="transition-delay:.15s">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,rgba(37,211,102,.3),rgba(18,140,126,.3))">🌿</div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Healthcare · Ayurveda</div>
+          <div class="portfolio-name">VedicUpchar</div>
+          <div style="font-size:11px; margin: 10px 0; color:var(--text-primary); opacity:0.8;">
+            <strong>Challenge:</strong> Scale digital patient acquisition pan-India.<br>
+            <strong>Strategy:</strong> Google Ads + GMB + WhatsApp chatbot.<br>
+            <strong>Result:</strong> 100+ daily patients, 1200+ cities.
+          </div>
+          <div class="portfolio-metrics">
+            <div class="portfolio-metric"><strong>1200+</strong>Cities</div>
+            <div class="portfolio-metric"><strong>5x</strong>Bookings</div>
+          </div>
+          <a href="case-studies.html" class="service-arrow" style="margin-top:15px; opacity:1; transform:none;">View Case Study →</a>
         </div>
       </div>
     </div>
@@ -2838,5 +2877,118 @@
     document.getElementById('exitPopup').onclick = (e) => { if(e.target === document.getElementById('exitPopup')) document.getElementById('exitPopup').classList.remove('active'); };
   })();
   </script>
+
+<script>
+// ===== SCROLL ANIMATIONS FOR TESTIMONIALS & PORTFOLIO =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait for GSAP to load
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // --- Testimonial Cards: staggered slide-up with rotation ---
+  gsap.from('.testi-card', {
+    scrollTrigger: {
+      trigger: '.testi-grid',
+      start: 'top 85%',
+      toggleActions: 'play none none reverse'
+    },
+    y: 80,
+    opacity: 0,
+    rotateX: 15,
+    scale: 0.92,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: 'power3.out'
+  });
+
+  // --- Testimonial stars twinkle animation ---
+  gsap.from('.testi-card .stars', {
+    scrollTrigger: {
+      trigger: '.testi-grid',
+      start: 'top 80%'
+    },
+    scale: 0,
+    rotate: -180,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: 'back.out(2)'
+  });
+
+  // --- Portfolio Cards: slide in from sides ---
+  const portfolioCards = document.querySelectorAll('.portfolio-card');
+  portfolioCards.forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none reverse'
+      },
+      x: i % 2 === 0 ? -120 : 120,
+      opacity: 0,
+      rotateY: i % 2 === 0 ? -10 : 10,
+      scale: 0.9,
+      duration: 1,
+      ease: 'power3.out'
+    });
+  });
+
+  // --- Portfolio metrics counter animation ---
+  document.querySelectorAll('.portfolio-metric strong').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 90%'
+      },
+      scale: 0,
+      duration: 0.5,
+      ease: 'back.out(3)'
+    });
+  });
+
+  // --- Result Cards: 3D flip entrance ---
+  gsap.from('.result-card', {
+    scrollTrigger: {
+      trigger: '.results-grid',
+      start: 'top 85%',
+      toggleActions: 'play none none reverse'
+    },
+    y: 100,
+    opacity: 0,
+    rotateX: 25,
+    scale: 0.85,
+    duration: 0.9,
+    stagger: 0.15,
+    ease: 'power4.out'
+  });
+
+  // --- Section titles: split text sweep ---
+  document.querySelectorAll('.section-title').forEach(title => {
+    gsap.from(title, {
+      scrollTrigger: {
+        trigger: title,
+        start: 'top 90%',
+        toggleActions: 'play none none none'
+      },
+      clipPath: 'inset(0 100% 0 0)',
+      duration: 1.2,
+      ease: 'power4.inOut'
+    });
+  });
+
+  // --- Section labels: slide from left ---
+  document.querySelectorAll('.section-label').forEach(label => {
+    gsap.from(label, {
+      scrollTrigger: {
+        trigger: label,
+        start: 'top 92%'
+      },
+      x: -60,
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power2.out'
+    });
+  });
+});
+</script>
 </body>
 </html>
