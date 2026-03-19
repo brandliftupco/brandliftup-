@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Metrix Mind</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .error-page .glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(150px);
+      pointer-events: none;
+    }
+    .glow-1 { background: rgba(123,47,255,0.15); top: -150px; left: -150px; }
+    .glow-2 { background: rgba(255,212,94,0.1); bottom: -150px; right: -150px; }
+    .error-code {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(120px, 20vw, 250px);
+      letter-spacing: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .error-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px, 4vw, 40px);
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    .error-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 450px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .error-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .error-links a {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+    .error-links .primary {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #000;
+    }
+    .error-links .ghost {
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+    }
+    .error-links .ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="error-code">404</div>
+    <div class="error-title">PAGE NOT FOUND</div>
+    <p class="error-desc">The page you're looking for doesn't exist or has been moved. Let's get you back to generating leads.</p>
+    <div class="error-links">
+      <a href="index.html" class="primary">← Back to Home</a>
+      <a href="contact.html" class="ghost">Book Free Audit</a>
+      <a href="services.html" class="ghost">Our Services</a>
+    </div>
+  </div>
+</body>
+</html>

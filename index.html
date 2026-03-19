@@ -3,6 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- Google Analytics 4 (Replace G-XXXXXXXXXX with your GA4 ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <!-- Google Tag Manager (Replace GTM-XXXXXXX with your GTM ID) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best Digital Marketing Agency in Delhi | Lead Generation for Clinics | Metrix Mind</title>
   <meta name="description"
@@ -43,6 +53,7 @@
   <meta name="twitter:description" content="We help clinics and local service businesses generate qualified leads through Google Ads & SEO. Results in 30 days or we work for free.">
   <meta name="twitter:image" content="https://metrixmind.in/assets/logo.png">
 
+  <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2355,7 +2366,7 @@
   <footer>
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:40px; width:100%; border-bottom: 1px solid rgba(255, 212, 94, 0.08); padding-bottom:60px; margin-bottom:40px;">
       <div>
-        <div class="footer-logo"><img src="assets/logo.png" alt="BL Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
+        <div class="footer-logo"><img loading="lazy" src="assets/logo.png" alt="BL Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
         <div style="margin-top:20px; font-size:12px; color:var(--text-muted); line-height:1.6; font-family:'Space Mono', monospace;">
           <strong>Metrix Mind HQ</strong><br>
           NH 10, West Cabin Block, Mundka,<br>
@@ -2512,6 +2523,40 @@
         });
       }
     });
+  </script>
+
+  <!-- EXIT POPUP -->
+  <div class="exit-popup-overlay" id="exitPopup">
+    <div class="exit-popup">
+      <button class="close-popup" id="closePopup">&times;</button>
+      <h3>WAIT! 🚀</h3>
+      <p>Before you go — get a <strong>FREE Growth Audit</strong> worth ₹15,000. We'll analyze your competitors, ad potential, and show you exactly how to 3x your leads.</p>
+      <a href="contact.html" class="popup-cta">Claim Free Audit →</a>
+      <button class="popup-skip" id="skipPopup">No thanks, I don't want more leads</button>
+    </div>
+  </div>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta">
+    <i class="fas fa-phone-alt"></i>
+    <a href="tel:+919582589655">Call Now — Free Audit</a>
+    <a href="contact.html" style="margin-left:auto; background:#000; color:var(--gold); padding:8px 16px; border-radius:50px; font-size:12px;">Book Online</a>
+  </div>
+
+  <script>
+  // Exit Intent Popup (desktop only, once per session)
+  (function(){
+    if(window.innerWidth < 769 || sessionStorage.getItem('exitShown')) return;
+    document.addEventListener('mouseout', function(e){
+      if(e.clientY < 5 && !sessionStorage.getItem('exitShown')){
+        document.getElementById('exitPopup').classList.add('active');
+        sessionStorage.setItem('exitShown','1');
+      }
+    });
+    document.getElementById('closePopup').onclick = () => document.getElementById('exitPopup').classList.remove('active');
+    document.getElementById('skipPopup').onclick = () => document.getElementById('exitPopup').classList.remove('active');
+    document.getElementById('exitPopup').onclick = (e) => { if(e.target === document.getElementById('exitPopup')) document.getElementById('exitPopup').classList.remove('active'); };
+  })();
   </script>
 </body>
 </html>
