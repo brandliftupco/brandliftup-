@@ -1,0 +1,14 @@
+# robots.txt for Metrix Mind
+# https://metrixmind.in
+
+User-agent: *
+Allow: /
+
+# Block build/config files
+Disallow: /build.js
+Disallow: /fix.js
+Disallow: /.git/
+Disallow: /.vercel/
+
+# Sitemap location
+Sitemap: https://metrixmind.in/sitemap.xml

@@ -4,14 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Growth Insights | The Metrix Mind Blog</title>
+  <meta name="keywords" content="digital marketing blog, clinic marketing tips, local seo guide, google ads tips, lead generation insights">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="canonical" href="https://metrixmind.in/blog-index.html">
+  
+  <!-- Geo Targeting -->
+  <meta name="geo.region" content="IN-DL">
+  <meta name="geo.placename" content="New Delhi">
+  <meta name="author" content="Metrix Mind">
+  <meta name="theme-color" content="#050508">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Growth Insights | The Metrix Mind Blog">
+  <meta property="og:description" content="Local marketing strategies, case studies, and AI insights to help you scale your clinic or local business.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://metrixmind.in/blog-index.html">
+  <meta property="og:image" content="https://metrixmind.in/assets/logo.png">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Metrix Mind">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@metrixmind">
+  <meta name="twitter:title" content="Growth Insights | The Metrix Mind Blog">
+  <meta name="twitter:description" content="Local marketing strategies, case studies, and AI insights to help you scale your clinic or local business.">
+  <meta name="twitter:image" content="https://metrixmind.in/assets/logo.png">
   <link rel="icon" href="assets/logo.png" type="image/png">
   <meta name="description" content="Local marketing strategies, case studies, and AI insights to help you scale your business.">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="assets/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js" defer></script>
   <style>
     .section { padding: 160px 60px 80px; }
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; }
@@ -23,13 +50,25 @@
     .blog-excerpt { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
     @media (max-width: 768px) { .section { padding: 120px 30px 60px; } }
   </style>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://metrixmind.in/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://metrixmind.in/blog-index.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
   
   <nav>
-    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="BL Logo" class="nav-logo-img"> METRIX <span>MIND</span></a>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Metrix Mind Logo" class="nav-logo-img"> METRIX <span>MIND</span></a>
     <ul class="nav-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -41,8 +80,18 @@
       <i class="fas fa-moon"></i>
     </button>
     <a href="contact.html" class="nav-cta">Get Started</a>
+  
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#services">Services</a>
+    <a href="about.html">About</a>
+    <a href="blog-index.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
+  <main>
   <section class="section">
     <h1 class="reveal" style="font-family:'Bebas Neue',sans-serif; font-size:80px; margin-bottom:60px;">GROWTH<br><span>INSIGHTS</span></h1>
     <div class="blog-grid">
@@ -70,13 +119,14 @@
     </div>
   </section>
 
+  </main>
   <footer>
     <div class="footer-social">
-        <a href="https://www.instagram.com/metrixmind.in/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/metrixmind" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.youtube.com/@metrixmindin" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/metrixmind.in/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/metrixmind" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@metrixmindin" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     </div>
     <div style="margin-top: 24px;">NH 10, West Cabin Block, Mundka, New Delhi, Delhi, 110041</div>
     <div style="margin-top: 8px;">metrixmind.in@gmail.com</div>
@@ -84,5 +134,15 @@
   </footer>
 
   <script src="assets/main.js"></script>
+
+  <script>
+    // HAMBURGER
+    const hb=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mo=document.getElementById('mobileOverlay');
+    if(hb){hb.onclick=()=>{hb.classList.toggle('active');mm.classList.toggle('active');mo.classList.toggle('active')};
+    mo.onclick=()=>{hb.classList.remove('active');mm.classList.remove('active');mo.classList.remove('active')};
+    mm.querySelectorAll('a').forEach(a=>a.onclick=()=>{hb.classList.remove('active');mm.classList.remove('active');mo.classList.remove('active')})}
+  </script>
+
+  <a href="https://wa.me/919582589655?text=Hi%20Metrix%20Mind!" class="whatsapp-btn" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 </body>
 </html>
