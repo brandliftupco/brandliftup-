@@ -1600,61 +1600,158 @@
       line-height: 1;
     }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px; /* Increased gap */
-      margin-top: 60px
-    }
-
-    .team-card {
-      background: rgba(255, 212, 94, 0.03); /* Soft BG */
-      border: 1px solid rgba(255, 212, 94, 0.05); /* Soft border */
-      border-radius: 24px; /* Curves */
-      padding: 40px 32px;
-      text-align: center;
-      transition: background 0.4s, border-color 0.4s, transform 0.4s;
-    }
-
-    .team-card:hover {
-      background: rgba(255, 212, 94, 0.06);
-      border-color: rgba(255, 212, 94, 0.15);
-      transform: translateY(-5px);
-    }
-
-    .team-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
+    /* CEO SPOTLIGHT */
+    .ceo-spotlight {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 32px;
+      gap: 80px;
+      margin-top: 60px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ceo-photo-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ceo-photo-ring {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      padding: 5px;
+      background: conic-gradient(var(--gold), var(--orange), var(--purple), var(--gold));
+      animation: ringRotate 6s linear infinite;
+      position: relative;
+    }
+    @keyframes ringRotate {
+      to { transform: rotate(360deg); }
+    }
+    .ceo-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      border: 4px solid var(--bg-primary);
+    }
+    .ceo-photo-glow {
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,212,94,0.12) 0%, transparent 70%);
+      z-index: -1;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    .ceo-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
       font-weight: 800;
-      color: white
-    }
-
-    .team-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
+      padding: 6px 14px;
+      border-radius: 20px;
       letter-spacing: 1px;
-      margin-bottom: 4px
     }
-
-    .team-role {
-      font-size: 11px;
+    .ceo-info {
+      flex: 1;
+    }
+    .ceo-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
       letter-spacing: 2px;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .ceo-title {
+      font-size: 13px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--gold);
       font-family: 'Space Mono', monospace;
-      margin-bottom: 12px
+      margin-bottom: 24px;
     }
-
-    .team-bio {
-      font-size: 13px;
+    .ceo-bio {
+      font-size: 15px;
       color: var(--text-muted);
-      line-height: 1.6
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+    .ceo-achievements {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .ceo-ach {
+      background: rgba(255, 212, 94, 0.08);
+      border: 1px solid rgba(255, 212, 94, 0.15);
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+    .ceo-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .ceo-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 212, 94, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 16px;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .ceo-social-link:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .ceo-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #000;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      margin-left: 16px;
+      transition: all 0.3s;
+    }
+    .ceo-cta:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(255, 212, 94, 0.3);
+    }
+    @media (max-width: 768px) {
+      .ceo-spotlight { flex-direction: column; text-align: center; gap: 40px; }
+      .ceo-photo-ring { width: 200px; height: 200px; margin: 0 auto; }
+      .ceo-name { font-size: 48px; }
+      .ceo-achievements { justify-content: center; }
+      .ceo-socials { justify-content: center; }
+      .ceo-bio { margin-left: auto; margin-right: auto; }
     }
 
     .faq-list {
@@ -2391,22 +2488,35 @@
     }
   </script>
 
-  <!-- TEAM -->
-  <section class="section" id="team">
-    <div class="section-label">The Minds</div>
-    <h2 class="section-title reveal">MEET THE<br><span style="color:var(--gold)">WAR ROOM</span> TEAM</h2>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <div class="team-avatar" style="background-image: url('assets/team/Chandan.webp'); background-size: cover; background-position: center;"></div>
-        <div class="team-name">CHANDAN <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
-        <div class="team-role">Founder & CEO</div>
-        <p class="team-bio">Braveheart Founder. Scaling clinics to 8-figure months with data-driven surgical precision.</p>
+  <!-- TEAM / CEO SPOTLIGHT -->
+  <section class="section" id="team" style="position:relative; overflow:hidden;">
+    <div class="hero-blob glow-purple" style="opacity:0.15; top:0; right:0;"></div>
+    <div class="section-label">The Founder</div>
+    <h2 class="section-title reveal">THE <span style="color:var(--gold)">MIND</span><br>BEHIND THE MACHINE</h2>
+    <div class="ceo-spotlight">
+      <div class="ceo-photo-wrap">
+        <div class="ceo-photo-glow"></div>
+        <div class="ceo-photo-ring">
+          <div class="ceo-photo" style="background-image: url('assets/team/Chandan.webp');"></div>
+        </div>
+        <div class="ceo-badge">CEO</div>
       </div>
-      <div class="team-card reveal" style="transition-delay:.1s">
-        <div class="team-avatar" style="background: linear-gradient(135deg, var(--gold), var(--orange)); background-size: cover; background-position: center;"></div>
-        <div class="team-name">NEETU <a href="#" style="color:var(--gold); font-size:12px;"><i class="fab fa-linkedin"></i></a></div>
-        <div class="team-role">Co-Founder & Creative Director</div>
-        <p class="team-bio">Creative Visionary. Crafting psychological funnels and brand stories that convert visitors into loyal clients.</p>
+      <div class="ceo-info">
+        <div class="ceo-name">CHANDAN</div>
+        <div class="ceo-title">Founder & CEO · Metrix Mind</div>
+        <p class="ceo-bio">From building JJ Communication's social media empire (100K → 31.5M followers) to scaling VedicUpchar's patient network across 1200+ cities — I build digital growth systems that deliver real, verifiable results. No fluff, no vanity metrics. Just results.</p>
+        <div class="ceo-achievements">
+          <span class="ceo-ach">📱 44M+ Audience Built</span>
+          <span class="ceo-ach">🏥 1200+ Cities</span>
+          <span class="ceo-ach">🚀 4+ Industries</span>
+          <span class="ceo-ach">🎯 SMM · SEO · Ads</span>
+        </div>
+        <div class="ceo-socials">
+          <a href="#" class="ceo-social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="ceo-social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="ceo-social-link"><i class="fab fa-twitter"></i></a>
+          <a href="contact.html" class="ceo-cta">Book a Call <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </section>
