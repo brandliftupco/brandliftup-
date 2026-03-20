@@ -74,16 +74,16 @@
 
     <section class="section">
       <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 60px; flex-wrap: wrap;">
-        <button class="filter-btn active" style="background: var(--gold); color: #000; border: none; padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">ALL</button>
-        <button class="filter-btn" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">GOOGLE ADS</button>
-        <button class="filter-btn" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">SEO</button>
-        <button class="filter-btn" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">SOCIAL MEDIA</button>
-        <button class="filter-btn" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">AI</button>
+        <button class="filter-btn active" data-filter="all" style="background: var(--gold); color: #000; border: none; padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">ALL</button>
+        <button class="filter-btn" data-filter="google-ads" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">GOOGLE ADS</button>
+        <button class="filter-btn" data-filter="seo" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">SEO</button>
+        <button class="filter-btn" data-filter="marketing" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">MARKETING</button>
+        <button class="filter-btn" data-filter="ai" style="background: rgba(255, 212, 94, 0.05); color: var(--text-muted); border: 1px solid rgba(255, 212, 94, 0.1); padding: 10px 24px; border-radius: 50px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer;">AI</button>
       </div>
 
       <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
         <!-- Post 1: West Delhi -->
-        <a href="blog-marketing-agency-west-delhi.html" class="blog-card reveal" style="text-decoration: none; color: inherit;">
+        <a href="blog-marketing-agency-west-delhi.html" class="blog-card reveal" data-category="marketing" style="text-decoration: none; color: inherit;">
           <div style="height: 240px; background: url('assets/west-delhi-digital.jpg') center/cover; position: relative; background-color: #222;">
             <div style="position: absolute; top: 20px; left: 20px; background: var(--gold); color: #000; padding: 4px 12px; font-size: 10px; font-weight: 800; border-radius: 4px; font-family: 'Space Mono';">DIGITAL MARKETING</div>
           </div>
@@ -96,7 +96,7 @@
         </a>
 
         <!-- Post 2: SEO Delhi -->
-        <a href="blog-seo-services-delhi-small-business.html" class="blog-card reveal" style="text-decoration: none; color: inherit;">
+        <a href="blog-seo-services-delhi-small-business.html" class="blog-card reveal" data-category="seo" style="text-decoration: none; color: inherit;">
           <div style="height: 240px; background: url('assets/seo-delhi-business.jpg') center/cover; position: relative; background-color: #222;">
             <div style="position: absolute; top: 20px; left: 20px; background: var(--gold); color: #000; padding: 4px 12px; font-size: 10px; font-weight: 800; border-radius: 4px; font-family: 'Space Mono';">SEO</div>
           </div>
@@ -109,7 +109,7 @@
         </a>
 
         <!-- Post 3: Gurgaon -->
-        <a href="blog-marketing-agency-gurgaon.html" class="blog-card reveal" style="text-decoration: none; color: inherit;">
+        <a href="blog-marketing-agency-gurgaon.html" class="blog-card reveal" data-category="marketing" style="text-decoration: none; color: inherit;">
           <div style="height: 240px; background: url('assets/gurgaon-marketing.jpg') center/cover; position: relative; background-color: #222;">
             <div style="position: absolute; top: 20px; left: 20px; background: var(--gold); color: #000; padding: 4px 12px; font-size: 10px; font-weight: 800; border-radius: 4px; font-family: 'Space Mono';">DIGITAL MARKETING</div>
           </div>
@@ -122,7 +122,7 @@
         </a>
 
         <!-- Post 4: Original Google Ads -->
-        <a href="blog-google-ads-clinic-guide.html" class="blog-card reveal" style="text-decoration: none; color: inherit;">
+        <a href="blog-google-ads-clinic-guide.html" class="blog-card reveal" data-category="google-ads" style="text-decoration: none; color: inherit;">
           <div style="height: 240px; background: url('assets/google-ads-strategy.jpg') center/cover; position: relative; background-color: #222;">
             <div style="position: absolute; top: 20px; left: 20px; background: var(--gold); color: #000; padding: 4px 12px; font-size: 10px; font-weight: 800; border-radius: 4px; font-family: 'Space Mono';">GOOGLE ADS</div>
           </div>
@@ -195,6 +195,36 @@
     if(hb){hb.onclick=()=>{hb.classList.toggle('active');mm.classList.toggle('active');mo.classList.toggle('active')};
     mo.onclick=()=>{hb.classList.remove('active');mm.classList.remove('active');mo.classList.remove('active')};
     mm.querySelectorAll('a').forEach(a=>a.onclick=()=>{hb.classList.remove('active');mm.classList.remove('active');mo.classList.remove('active')})}
+
+    // Blog Filtering Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.style.background = 'rgba(255, 212, 94, 0.05)';
+          b.style.color = 'var(--text-muted)';
+        });
+        btn.classList.add('active');
+        btn.style.background = 'var(--gold)';
+        btn.style.color = '#000';
+
+        const filter = btn.getAttribute('data-filter');
+
+        blogCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+            setTimeout(() => card.style.opacity = '1', 10);
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => card.style.display = 'none', 400);
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
