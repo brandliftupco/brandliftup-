@@ -136,45 +136,55 @@
     </article>
   </main>
 
-  <footer>
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:40px; width:100%; border-bottom: 1px solid rgba(255, 212, 94, 0.08); padding-bottom:60px; margin-bottom:40px; text-align: left;">
+  <!-- FOOTER -->
+  <footer style="padding: 100px 60px 40px; border-top: 1px solid rgba(255, 212, 94, 0.05); background: #050505;">
+    <div style="display:grid; grid-template-columns: 1.5fr 1fr 1fr; gap:60px; width:100%; padding-bottom:60px; text-align: left;">
+      <!-- Column 1: Brand & HQ -->
       <div>
-        <div class="nav-logo" style="margin-bottom: 20px;"><img src="assets/logo.png" alt="Metrix Mind Logo" class="nav-logo-img"> METRIX <span>MIND</span></div>
-        <p style="font-size:12px; color:var(--text-muted); line-height:1.6; font-family:'Space Mono', monospace; margin-bottom: 20px;">Predictable growth for clinics and local brands.</p>
-        <div style="font-size:11px; color:var(--text-muted); line-height:1.6; font-family:'Space Mono', monospace;">
+        <div class="footer-logo" style="margin-bottom: 20px;"><img loading="lazy" src="assets/logo.png" alt="Metrix Mind Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px; font-family: 'Space Mono', monospace; opacity: 0.8;">Predictable growth for clinics and local brands.</p>
+        <div style="font-size:12px; color:var(--text-muted); line-height:1.8; font-family:'Space Mono', monospace;">
           NH 10, West Cabin Block, Mundka,<br>
           New Delhi, Delhi, 110041<br>
-          <a href="tel:+919582589655" style="color:var(--gold); text-decoration:none;">+91 95825 89655</a><br>
-          <a href="mailto:metrixmind.in@gmail.com" style="color:var(--gold); text-decoration:none;">metrixmind.in@gmail.com</a>
+          <a href="tel:+919582589655" style="color:var(--gold); text-decoration:none; font-weight: bold; display:block; margin-top:5px;">+91 95825 89655</a>
+          <a href="mailto:metrixmind.in@gmail.com" style="color:var(--gold); text-decoration:none; font-weight: bold; display:block;">metrixmind.in@gmail.com</a>
         </div>
       </div>
+
+      <!-- Column 2: Solutions -->
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px;">Solutions</div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="seo-services.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">SEO Services</a>
-          <a href="google-ads-services.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">Google Ads</a>
-          <a href="social-media-marketing-services.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">Social Media</a>
-          <a href="ai-services.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">AI Solutions</a>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; margin-bottom:25px; color:var(--text-primary); opacity: 0.9;">SOLUTIONS</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <a href="seo-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">SEO Services</a>
+          <a href="google-ads-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">Google Ads</a>
+          <a href="social-media-marketing-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">Social Media</a>
+          <a href="ai-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">AI Solutions</a>
         </div>
       </div>
+
+      <!-- Column 3: Company -->
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; margin-bottom:20px;">Company</div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="about.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">About Us</a>
-          <a href="blog.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">Blog</a>
-          <a href="contact.html" style="color:var(--text-muted); text-decoration:none; font-size:12px;">Contact</a>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; margin-bottom:25px; color:var(--text-primary); opacity: 0.9;">COMPANY</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <a href="about.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; font-family: 'Space Mono', monospace;">About Us</a>
+          <a href="blog.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; font-family: 'Space Mono', monospace;">Blog</a>
+          <a href="contact.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; font-family: 'Space Mono', monospace;">Contact</a>
         </div>
       </div>
     </div>
-    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:24px;">
-      <div class="footer-social">
-        <a href="https://www.instagram.com/metrixmind.in/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/metrixmind" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.youtube.com/@metrixmindin" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+
+    <!-- Bottom Bar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:32px; border-top: 1px solid rgba(255, 212, 94, 0.05); padding-top: 40px;">
+      <div class="footer-social" style="display: flex; gap: 15px;">
+        <a href="https://www.instagram.com/metrixmind.in/" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/metrixmind" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@metrixmindin" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-youtube"></i></a>
       </div>
-      <div style="text-align:center;">© 2025-2026 Metrix Mind. All Rights Reserved.</div>
+      <div style="font-family:'Space Mono', monospace; font-size:11px; color:var(--text-muted); letter-spacing:1px; opacity: 0.7;">
+        Â© 2025-2026 METRIX MIND. ALL RIGHTS RESERVED.
+      </div>
     </div>
   </footer>
 
