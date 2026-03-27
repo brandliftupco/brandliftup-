@@ -23,6 +23,11 @@
   --black: #050508;
   --white: #f8f8f8;
   --gray-dark: #121215;
+  
+  /* Typography */
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 }
 
 body.light-mode {
@@ -57,7 +62,7 @@ html {
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-body);
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
 }
@@ -110,9 +115,10 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 28px;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   color: var(--text-primary) !important;
   display: flex;
   align-items: center;
@@ -180,7 +186,7 @@ nav {
 }
 
 .section-label {
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -205,7 +211,7 @@ nav {
 }
 
 footer {
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-muted);
   text-align: center;

@@ -2,183 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google Analytics 4 (Replace G-Q7TJVXVHP9 with your GA4 ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7TJVXVHP9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Q7TJVXVHP9');
-  </script>
-  <meta name="description" content="Read the Metrix Mind privacy policy. Learn how we collect, use, and protect your data.">
-  <link rel="canonical" href="https://metrixmind.in/privacy-policy.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Metrix Mind</title>
-  <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="assets/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
   <meta name="robots" content="noindex">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    .legal-content { max-width: 800px; padding: 160px 60px 80px; }
-    .legal-content h1 { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: var(--gold); letter-spacing: 2px; margin-bottom: 40px; }
-    .legal-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-top: 40px; color: var(--gold); }
-    .legal-content p { color: var(--text-muted); line-height: 1.8; margin-top: 12px; }
-    @media (max-width: 768px) { .legal-content { padding: 120px 30px 60px; } }
+    body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); padding: 100px 60px; line-height: 1.8; transition: background 0.3s, color 0.3s; }
+    h1 { font-size: 60px; margin-bottom: 40px; color: var(--gold); font-family: var(--font-display); font-weight: 800; letter-spacing: 1px; }
+    h2 { font-size: 24px; margin-top: 40px; color: var(--gold); }
+    p { color: var(--text-muted); max-width: 800px; }
+    a { color: var(--gold); text-decoration: none; }
+    .theme-toggle { position: fixed; top: 40px; right: 40px; background: none; border: 1px solid var(--gold); color: var(--gold); padding: 10px; cursor: pointer; border-radius: 12px; font-family: 'Space Mono', monospace; font-size: 10px; transition: 0.3s; }
+    .theme-toggle:hover { background: rgba(255, 215, 0, 0.1); }
+    @media (max-width: 768px) { body { padding: 60px 30px; } .theme-toggle { top: 20px; right: 20px; } }
   </style>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
-  <nav>
-    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Metrix Mind Logo" class="nav-logo-img"> METRIX <span>MIND</span></a>
-        <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="seo-services.html">SEO Services</a></li>
-      <li><a href="google-ads-services.html">Google Ads Services</a></li>
-      <li><a href="social-media-marketing-services.html">Social Media Marketing</a></li>
-      <li><a href="ai-services.html">AI</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="blog.html">Blog</a></li>
-    </ul>
-    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
-      <i class="fas fa-sun"></i>
-      <i class="fas fa-moon"></i>
-    </button>
-    <a href="contact.html" class="nav-cta">Get Started</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-  </nav>
-  <div class="mobile-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="seo-services.html">SEO Services</a>
-    <a href="google-ads-services.html">Google Ads Services</a>
-    <a href="social-media-marketing-services.html">Social Media Marketing</a>
-    <a href="ai-services.html">AI</a>
-    <a href="contact.html">Contact</a>
-    <a href="blog.html">Blog</a>
-  </div>
-  <main>
-  <div class="legal-content">
-    <h1>PRIVACY POLICY</h1>
-    <p>Last Updated: March 2026</p>
-    
-    <h2>1. Data Collection</h2>
-    <p>We collect information you provide directly to us through our contact forms, including name, email, phone number, and business details. We use this to provide lead audits and marketing services.</p>
-    
-    <h2>2. Cookies</h2>
-    <p>We use essential cookies to ensure the website functions correctly and analytical cookies (like Google Analytics) to understand how you use our site.</p>
-    
-    <h2>3. Third-Party Sharing</h2>
-    <p>We do not sell your data. We only share information with trusted service providers who assist us in operating our website and conducting our business.</p>
-    
-    <h2>4. Contact Us</h2>
-    <p>For any privacy-related inquiries, please email us at <a href="mailto:metrixmind.in@gmail.com" style="color:var(--gold);">metrixmind.in@gmail.com</a></p>
-  </div>
-  </main>
-
-  <!-- FOOTER -->
-  <footer style="padding: 100px 60px 40px; border-top: 1px solid rgba(255, 212, 94, 0.05); background: #050505;">
-    <div style="display:grid; grid-template-columns: 1.5fr 1fr 1fr; gap:60px; width:100%; padding-bottom:60px; text-align: left;">
-      <!-- Column 1: Brand & HQ -->
-      <div>
-        <div class="footer-logo" style="margin-bottom: 20px;"><img loading="lazy" src="assets/logo.png" alt="Metrix Mind Logo" class="footer-logo-img"> METRIX <span>MIND</span></div>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px; font-family: 'Space Mono', monospace; opacity: 0.8;">Predictable growth for clinics and local brands.</p>
-        <div style="font-size:12px; color:var(--text-muted); line-height:1.8; font-family:'Space Mono', monospace;">
-          NH 10, West Cabin Block, Mundka,<br>
-          New Delhi, Delhi, 110041<br>
-          <a href="tel:+919582589655" style="color:var(--gold); text-decoration:none; font-weight: bold; display:block; margin-top:5px;">+91 95825 89655</a>
-          <a href="mailto:metrixmind.in@gmail.com" style="color:var(--gold); text-decoration:none; font-weight: bold; display:block;">metrixmind.in@gmail.com</a>
-        </div>
-      </div>
-
-      <!-- Column 2: Solutions -->
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; margin-bottom:25px; color:var(--text-primary); opacity: 0.9;">SOLUTIONS</div>
-        <div style="display:flex; flex-direction:column; gap:14px;">
-          <a href="seo-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">SEO Services</a>
-          <a href="google-ads-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">Google Ads</a>
-          <a href="social-media-marketing-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">Social Media</a>
-          <a href="ai-services.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; transition:0.3s; font-family: 'Space Mono', monospace;">AI Solutions</a>
-        </div>
-      </div>
-
-      <!-- Column 3: Company -->
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; margin-bottom:25px; color:var(--text-primary); opacity: 0.9;">COMPANY</div>
-        <div style="display:flex; flex-direction:column; gap:14px;">
-          <a href="about.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; font-family: 'Space Mono', monospace;">About Us</a>
-          <a href="blog.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; font-family: 'Space Mono', monospace;">Blog</a>
-          <a href="contact.html" style="color:var(--text-muted); text-decoration:none; font-size:13px; font-family: 'Space Mono', monospace;">Contact</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom Bar -->
-    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:32px; border-top: 1px solid rgba(255, 212, 94, 0.05); padding-top: 40px;">
-      <div class="footer-social" style="display: flex; gap: 15px;">
-        <a href="https://www.instagram.com/metrixmind.in/" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/metrix-mind-0142433b7/" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/metrixmind" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61578504833388" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.youtube.com/@metrixmindin" target="_blank" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--text-muted); transition: 0.3s;"><i class="fab fa-youtube"></i></a>
-      </div>
-      <div style="font-family:'Space Mono', monospace; font-size:11px; color:var(--text-muted); letter-spacing:1px; opacity: 0.7;">
-        Â© 2025-2026 METRIX MIND. ALL RIGHTS RESERVED.
-      </div>
-    </div>
-  </footer>
-
-  <a href="https://wa.me/919582589655?text=Hi%20Metrix%20Mind!" class="whatsapp-btn" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-
+  
+  <button id="themeToggle" class="theme-toggle">MODE</button>
+  
+  <h1>PRIVACY POLICY</h1>
+  <p>Last Updated: March 2026</p>
+  
+  <h2>1. Data Collection</h2>
+  <p>We collect information you provide directly to us through our contact forms, including name, email, phone number, and business details. We use this to provide lead audits and marketing services.</p>
+  
+  <h2>2. Cookies</h2>
+  <p>We use essential cookies to ensure the website functions correctly and analytical cookies (like Google Analytics) to understand how you use our site.</p>
+  
+  <h2>3. Third-Party Sharing</h2>
+  <p>We do not sell your data. We only share information with trusted service providers who assist us in operating our website and conducting our business.</p>
+  
+  <h2>4. Contact Us</h2>
+  <p>For any privacy-related inquiries, please email us at <a href="mailto:metrixmind.in@gmail.com">metrixmind.in@gmail.com</a></p>
+  
+  <p style="margin-top:60px;"><a href="index.html">← Back to Home</a></p>
+  
   <script src="assets/main.js"></script>
-  <script>
-    const hb=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu'),mo=document.getElementById('mobileOverlay');
-    if(hb){hb.onclick=()=>{hb.classList.toggle('active');mm.classList.toggle('active');mo.classList.toggle('active')};
-    mo.onclick=()=>{hb.classList.remove('active');mm.classList.remove('active');mo.classList.remove('active')};
-    mm.querySelectorAll('a').forEach(a=>a.onclick=()=>{hb.classList.remove('active');mm.classList.remove('active');mo.classList.remove('active')})}
-  </script>
-
-  <!-- EXIT POPUP -->
-  <div class="exit-popup-overlay" id="exitPopup">
-    <div class="exit-popup">
-      <button class="close-popup" id="closePopup">&times;</button>
-      <h3>WAIT! ðŸš€</h3>
-      <p>Before you go â€” get a <strong>FREE Growth Audit</strong> worth â‚¹15,000. We'll analyze your competitors, ad potential, and show you exactly how to 3x your leads.</p>
-      <a href="contact.html" class="popup-cta">Claim Free Audit â†’</a>
-      <button class="popup-skip" id="skipPopup">No thanks, I don't want more leads</button>
-    </div>
-  </div>
-
-  <!-- STICKY MOBILE CTA -->
-  <div class="sticky-cta">
-    <i class="fas fa-phone-alt"></i>
-    <a href="tel:+919582589655">Call Now â€” Free Audit</a>
-    <a href="contact.html" style="margin-left:auto; background:#000; color:var(--gold); padding:8px 16px; border-radius:50px; font-size:12px;">Book Online</a>
-  </div>
-
-  <script>
-  // Exit Intent Popup (desktop only, once per session)
-  (function(){
-    if(window.innerWidth < 769 || sessionStorage.getItem('exitShown')) return;
-    document.addEventListener('mouseout', function(e){
-      if(e.clientY < 5 && !sessionStorage.getItem('exitShown')){
-        document.getElementById('exitPopup').classList.add('active');
-        sessionStorage.setItem('exitShown','1');
-      }
-    });
-    document.getElementById('closePopup').onclick = () => document.getElementById('exitPopup').classList.remove('active');
-    document.getElementById('skipPopup').onclick = () => document.getElementById('exitPopup').classList.remove('active');
-    document.getElementById('exitPopup').onclick = (e) => { if(e.target === document.getElementById('exitPopup')) document.getElementById('exitPopup').classList.remove('active'); };
-  })();
-  </script>
 </body>
 </html>
+
+
+
 
